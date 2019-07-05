@@ -1,0 +1,11 @@
+ThemeFile=best-ui
+Transparency=low
+Font=Hack
+FontHeight=10
+CopyOnSelect=no
+CopyAsRTF=no
+Columns=120
+Rows=30
+ConfirmExit=no
+Scrollbar=none
+CursorBlinks=yes

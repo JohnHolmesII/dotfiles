@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ $PACKAGER = "pacman" ]; then
+	pacman -Qett --color=auto | $PAGER
+fi
+

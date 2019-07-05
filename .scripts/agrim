@@ -1,0 +1,11 @@
+#!/bin/sh
+
+run=`exists grim && exists wl-copy`
+
+if [ run ]; then
+	grim - | wl-copy
+else
+	echo "Can't use agrim"
+	exit 1
+fi
+

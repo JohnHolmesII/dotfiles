@@ -1,0 +1,14 @@
+*
+
+!.gitignore
+!.gitconfig
+!.bashrc
+!.minttyrc
+!.profile
+!.scripts
+!.scripts/*
+!.config
+!.config/sway
+!.config/sway/*
+!.config/waybar/style.css
+
