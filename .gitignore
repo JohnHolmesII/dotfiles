@@ -11,4 +11,6 @@
 !.config/sway
 !.config/sway/*
 !.config/waybar/style.css
+!.config/gcm
+!.config/gcm/gcm.jar
 
