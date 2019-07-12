@@ -4,7 +4,7 @@ exists()
 }
 
 exists nvim         && export EDITOR=nvim && alias vim='nvim'
-exists more         && export PAGER=more
+exists less         && export PAGER=less
 exists pacman       && export PACKAGER=pacman
 exists xbps-install && export PACKAGER=xbps
 exists apt          && export PACKAGER=apt
