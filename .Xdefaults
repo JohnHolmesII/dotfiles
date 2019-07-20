@@ -1,0 +1,58 @@
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.rgba:                   rgb
+Xft.autohint:               false
+
+URxvt.depth:                32
+URxvt.transparent:          true
+URxvt.fading:               0
+URxvt.loginShell:           true
+URxvt.saveLines:            12000
+URxvt.internalBorder:       3
+URxvt.lineSpace:            0
+
+! Fonts
+URxvt.allow_bold:           true
+URxvt*font:                 xft:Hack:pixelsize=13
+URxvt*boldFont:             xft:Hack:bold:pixelsize=13
+
+! Fix font space
+URxvt*letterSpace:          -1
+
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+
+! Cursor
+URxvt.cursorBlink:          false
+URxvt*cursorColor:          #a3adb8
+URxvt.cursorUnderline:      false
+
+! Pointer
+URxvt.pointerBlank:         true
+
+*background:                rgba:2600/1c00/1400/e600
+*foreground:                #a3adb8
+*fadeColor:                 #002b36
+*pointerColorBackground:    #586e75
+*pointerColorForeground:    #93a1a1
+
+! Terminal Colors
+*foreground:                #a3adb8
+*color0:                    #493829
+*color1:                    #613318
+*color2:                    #404f24
+*color3:                    #a1941d
+*color4:                    #246024
+*color5:                    #9f572b
+*color6:                    #326b62
+*color7:                    #83929f
+*color8:                    #816c5b
+*color9:                    #8f3b1b
+*color10:                   #668d3c
+*color11:                   #dbca69
+*color12:                   #397628
+*color13:                   #af8152
+*color14:                   #7fa292
+*color15:                   #a3adb8
+
