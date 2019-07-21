@@ -10,6 +10,7 @@
 !.config
 !.config/sway
 !.config/sway/*
+!.config/waybar
 !.config/waybar/style.css
 !.config/gcm
 !.config/gcm/gcm.jar
