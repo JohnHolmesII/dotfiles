@@ -1,9 +1,7 @@
 *
-
 !.gitignore
 !.gitconfig
 !.bashrc
-!.minttyrc
 !.profile
 !.scripts
 !.scripts/*
@@ -11,7 +9,7 @@
 !.config/sway
 !.config/sway/*
 !.config/waybar
-!.config/waybar/style.css
+!.config/waybar/*
 !.config/gcm
 !.config/gcm/gcm.jar
 !.Xdefaults

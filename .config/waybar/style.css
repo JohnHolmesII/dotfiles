@@ -28,7 +28,7 @@ window#waybar {
 	background-color: #EB4D4B;
 }
 
-#mode, #clock, #battery {
+#network, #mode, #clock, #battery {
     padding: 0 10px;
     margin: 0 5px;
 }
@@ -38,13 +38,19 @@ window#waybar {
     border-bottom: 3px solid white;
 }
 
+#network {
+    color: #d3f5c0;
+    background: #763f82;
+}
+
 #clock {
-    background-color: #64727D;
+    color: #d3f5c0;
+    background-color: #7b5da9;
 }
 
 #battery {
-    background-color: #ffffff;
-    color: black;
+    color: #d3f5c0;
+    background-color: #380940;
 }
 
 #battery.charging {
