@@ -37,9 +37,9 @@ elif [[ $SYSNAME == "Arch" ]]; then
 	alias gh='cd /media/Programs/GitHub'
 	alias school='cd /media/Programs/School'
 elif [[ $SYSNAME == "Ubuntu" ]]; then
-	alias get='sudo apt install'
+	alias get='sudo apt-get install'
 	alias query='apt search'
-	alias rem='sudo apt remove'
+	alias rem='sudo apt-get remove'
 	alias gh='cd /mnt/d/Programs/GitHub'
 	alias school='cd /mnt/d/Programs/School'
 	sshd_status=$(service ssh status)
