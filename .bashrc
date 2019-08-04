@@ -42,7 +42,7 @@ elif [[ $SYSNAME == "Ubuntu" ]]; then
 	alias rem='sudo apt-get remove'
 	alias gh='cd /mnt/d/Programs/GitHub'
 	alias school='cd /mnt/d/Programs/School'
-	sshd_status=$(service ssh status)
+	sshd_status=$(service ssh status 2>/dev/null)
 	if [[ $sshd_status = *"is not running"* ]]; then
   		sudo service ssh --full-restart
 	fi
