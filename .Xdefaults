@@ -3,6 +3,7 @@ Xft.antialias:              true
 Xft.rgba:                   rgb
 Xft.autohint:               false
 
+URxvt.geometry:             120x30
 URxvt.depth:                32
 URxvt.transparent:          true
 URxvt.fading:               0
