@@ -2,5 +2,7 @@
 
 if [ $PACKAGER = "pacman" ]; then
 	pacman -Qett --color=auto | $PAGER
+elif [ $PACKAGER = "xbps" ]; then
+	xbps-query -m | $PAGER
 fi
 
