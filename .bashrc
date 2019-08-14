@@ -38,7 +38,7 @@ elif [[ $SYSNAME == "Arch" ]]; then
 	alias school='cd /media/Programs/School'
 elif [[ $SYSNAME == "Ubuntu" ]]; then
 	alias get='sudo apt-get install'
-	alias query='apt search'
+	alias query='apt-cache search --names-only'
 	alias rem='sudo apt-get remove'
 	alias gh='cd /mnt/d/Programs/GitHub'
 	alias school='cd /mnt/d/Programs/School'
