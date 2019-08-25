@@ -25,7 +25,7 @@ command -v clang >/dev/null 2>&1 && export CC=clang && export CXX=clang++
 if [[ $SYSNAME == "VoidLinux" ]]; then
 	export XDG_RUNTIME_DIR=/tmp
 	alias get='sudo xbps-install -S'
-	alias query='xbps-query -Rs'
+	alias query='xbps-query --regex -Rs'
 	alias rem='sudo xbps-remove -R'
 	alias off='sudo shutdown -P'
 elif [[ $SYSNAME == "Arch" ]]; then
