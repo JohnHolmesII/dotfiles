@@ -13,3 +13,5 @@ exists pkg          && export PACKAGER=pkg
 [ -d $HOME/.scripts ] && export PATH=$PATH:$HOME/.scripts
 [ -f $HOME/.bashrc ] && . $HOME/.bashrc
 
+backupRPCS3
+

@@ -1,0 +1,8 @@
+#!/bin/sh
+exists tinycron || (echo No tinycron && exit 1)
+
+if [ -d $HOME/.config/rpcs3 ]; then
+	killall tinycron > /dev/null 2>&1
+	tinycron '@hourly' 'git -C $HOME/.config/rpcs3/ commit -am Cron backup && git push' &
+fi
+
