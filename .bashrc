@@ -23,7 +23,7 @@ export ASAN_SYMBOLIZER_PATH=`which llvm-symbolizer 2>/dev/null`
 command -v clang >/dev/null 2>&1 && export CC=clang && export CXX=clang++
 
 if [[ $SYSNAME == "VoidLinux" ]]; then
-	export XDG_RUNTIME_DIR=/tmp
+	export XDG_RUNTIME_DIR=/var/tmp
 	alias get='sudo xbps-install -S'
 	alias query='xbps-query --regex -Rs'
 	alias rem='sudo xbps-remove -R'
