@@ -3,15 +3,15 @@ exists()
 	which $1 >/dev/null 2>&1
 }
 
-exists nvim         && export EDITOR=nvim && alias vim='nvim'
-exists less         && export PAGER=less
-exists pacman       && export PACKAGER=pacman
-exists xbps-install && export PACKAGER=xbps
-exists apt          && export PACKAGER=apt
-exists pkg          && export PACKAGER=pkg
+exists 'nvim'         && export EDITOR='nvim' && alias vim='nvim'
+exists 'less'         && export PAGER='less'
+exists 'pacman'       && export PACKAGER='pacman'
+exists 'xbps-install' && export PACKAGER='xbps'
+exists 'apt'          && export PACKAGER='apt'
+exists 'pkg'          && export PACKAGER='pkg'
 
 [ -d $HOME/.scripts ] && export PATH=$PATH:$HOME/.scripts
-[ -f $HOME/.bashrc ] && . $HOME/.bashrc
+[ -f $HOME/.bashrc ]  && . $HOME/.bashrc
 
-backupRPCS3
+exists 'tinycron' && (tinycron '@hourly' backupRPCS3 &)
 
