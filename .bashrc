@@ -36,6 +36,12 @@ elif [[ $SYSNAME == "Arch" ]]; then
 	alias off='shutdown 0'
 	alias gh='cd /media/Programs/GitHub'
 	alias school='cd /media/Programs/School'
+elif [[ $SYSNAME == "ManjaroLinux" ]]; then
+	alias get='yay -Sy'
+	alias query='pacman -Ss'
+	alias yquery='yay -Ss'
+	alias rem='yay -Rs'
+	alias off='shutdown 0'
 elif [[ $SYSNAME == "Ubuntu" ]]; then
 	alias get='sudo apt-get install'
 	alias query='apt-cache search --names-only'
