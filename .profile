@@ -13,5 +13,5 @@ exists 'pkg'          && export PACKAGER='pkg'
 [ -d $HOME/.scripts ] && export PATH=$PATH:$HOME/.scripts
 [ -f $HOME/.bashrc ]  && . $HOME/.bashrc
 
-exists 'tinycron' && (tinycron '@hourly' backupRPCS3 &)
+exists 'tinycron' && (killall tinycron 2> /dev/null; (tinycron '@hourly' backupRPCS3 &))
 
