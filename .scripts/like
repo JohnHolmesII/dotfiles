@@ -1,0 +1,8 @@
+# Can't have a hashbang for history
+
+if [ -z "$@" ] || [ ! "$@" = "please" ]; then
+	echo "Hmmm, what's the magic word?"
+else
+	sudo $(echo `history | tail -n2 | head -n1` | sed 's/[0-9]* //')
+fi
+
