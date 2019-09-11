@@ -1,9 +1,16 @@
 #!/bin/sh
 
 RPCS3D=$HOME/.config/rpcs3
-GITCD="-C $RPCS3D --git-dir=$RPCS3D/.git"
 
 if [ -d $RPCS3D ]; then
-	git $GITCD add -A && git $GITCD commit -am 'Cron backup' && git $GITCD push
+	cd $RPCS3D                   || exit 1
+	git add -A                   || exit 0
+	git commit -am 'Cron backup' || exit 1
+	git push                     || exit 1
+else
+	echo "RPCS3 dir not found"
+	exit 1
 fi
+
+exit 0
 
