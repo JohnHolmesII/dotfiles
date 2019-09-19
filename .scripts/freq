@@ -1,0 +1,8 @@
+#!/bin/sh
+
+while true; do
+	lscpu | grep "CPU MHz"
+	printf "\b\r"
+	sleep 1
+done
+
