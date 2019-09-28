@@ -21,11 +21,8 @@ if [[ $SYSNAME == "VoidLinux" ]]; then
 	export XDG_RUNTIME_DIR=/var/tmp
 	alias off='sudo shutdown -P'
 elif [[ $SYSNAME == "Arch" ]]; then
-	alias off='shutdown 0'
 	alias gh='cd /media/Programs/GitHub'
 	alias school='cd /media/Programs/School'
-elif [[ $SYSNAME == "ManjaroLinux" ]]; then
-	alias off='shutdown 0'
 elif [[ $SYSNAME == "Ubuntu" ]]; then
 	alias gh='cd /mnt/d/Programs/GitHub'
 	alias school='cd /mnt/d/Programs/School'
@@ -40,8 +37,6 @@ elif [[ $SYSNAME == "Msys" ]]; then
 	alias school='cd "D:\Programs\School"'
 	CPPFLAGS=-I/mingw64/include
 	LDFLAGS=-L/mingw64/lib
-elif [[ $SYSNAME == "FreeBSD" ]]; then
-	alias off='sudo shutdown'
 fi
 
 alias vlg='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
