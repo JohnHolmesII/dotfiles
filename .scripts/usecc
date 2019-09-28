@@ -1,11 +1,11 @@
 #!/bin/sh
 
-if [ -z "$@" ]; then
+if [ -z "$1" ]; then
 	echo Which compiler? && exit 1;
-elif [ "$@" = "gcc" ]; then
+elif [ "$1" = "gcc" ]; then
 	export CC=gcc;
 	export CXX=g++;
-elif [ "$@" = "clang" ]; then
+elif [ "$1" = "clang" ]; then
 	export CC=clang;
 	export CXX=clang++;
 fi
