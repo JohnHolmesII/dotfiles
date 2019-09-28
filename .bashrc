@@ -1,6 +1,8 @@
 #I like my .bashrc file
-. $HOME/.scripts/git-completion.bash
-. $HOME/.scripts/git-prompt.sh
+# shellcheck shell=bash
+# shellcheck disable=SC1090
+. "$HOME"/.scripts/git-completion.bash
+. "$HOME"/.scripts/git-prompt.sh
 
 PS1='\[\e]0;\w\a\]'         # title bar
 PS1="$PS1"'\n'              # new line
@@ -17,26 +19,26 @@ PS1="$PS1"'\n'              # new line
 PS1="$PS1"'$ '              # prompt: always $
 export PS1
 
-if [[ $SYSNAME == "VoidLinux" ]]; then
+if [[ "$SYSNAME" == "VoidLinux" ]]; then
 	export XDG_RUNTIME_DIR=/var/tmp
 	alias off='sudo shutdown -P'
-elif [[ $SYSNAME == "Arch" ]]; then
+elif [[ "$SYSNAME" == "Arch" ]]; then
 	alias gh='cd /media/Programs/GitHub'
 	alias school='cd /media/Programs/School'
-elif [[ $SYSNAME == "Ubuntu" ]]; then
+elif [[ "$SYSNAME" == "Ubuntu" ]]; then
 	alias gh='cd /mnt/d/Programs/GitHub'
 	alias school='cd /mnt/d/Programs/School'
 	sshd_status=$(service ssh status 2>/dev/null)
-	if [[ $sshd_status = *"is not running"* ]]; then
+	if [[ "$sshd_status" = *"is not running"* ]]; then
   		sudo service ssh --full-restart
 	fi
-elif [[ $SYSNAME == "Msys" ]]; then
+elif [[ "$SYSNAME" == "Msys" ]]; then
 	export MSYSTEM="MSYS"
-	export PATH=$PATH:/mingw64/bin/
+	export PATH="$PATH":/mingw64/bin/
 	alias gh='cd "D:\Programs\GitHub"'
 	alias school='cd "D:\Programs\School"'
-	CPPFLAGS=-I/mingw64/include
-	LDFLAGS=-L/mingw64/lib
+	export CPPFLAGS=-I/mingw64/include
+	export LDFLAGS=-L/mingw64/lib
 fi
 
 alias vlg='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
