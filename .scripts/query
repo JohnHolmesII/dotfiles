@@ -1,0 +1,17 @@
+#!/bin/sh
+
+case "$PACKAGER" in
+	"yay") pacman -Ss $@
+	;;
+	"pacman") pacman -Ss $@
+	;;
+	"xbps") xbps-query --regex -Rs $@
+	;;
+	"apt") apt-cache search --names-only $@
+	;;
+	"pkg") pkg search $@
+	;;
+	*) echo "get: unknown packager"; exit 1
+	;;
+esac
+
