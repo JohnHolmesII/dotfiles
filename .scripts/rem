@@ -1,0 +1,17 @@
+#!/bin/sh
+
+case "$PACKAGER" in
+	"yay") yay -Rs $@
+	;;
+	"pacman") sudo pacman -Rs $@
+	;;
+	"xbps") sudo xbps-remove -R $@
+	;;
+	"apt") sudo apt-get remove $@
+	;;
+	"pkg") sudo pkg remove -R $@
+	;;
+	*) echo "get: unknown packager"; exit 1
+	;;
+esac
+
