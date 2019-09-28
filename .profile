@@ -1,8 +1,3 @@
-exists()
-{
-	which $1 >/dev/null 2>&1
-}
-
 exists 'nvim'         && export EDITOR='nvim' && alias vim='nvim'
 exists 'less'         && export PAGER='less'
 exists 'pacman'       && export PACKAGER='pacman'
