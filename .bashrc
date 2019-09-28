@@ -26,12 +26,10 @@ if [[ $SYSNAME == "VoidLinux" ]]; then
 	export XDG_RUNTIME_DIR=/var/tmp
 	alias off='sudo shutdown -P'
 elif [[ $SYSNAME == "Arch" ]]; then
-	alias yquery='yay -Ss'
 	alias off='shutdown 0'
 	alias gh='cd /media/Programs/GitHub'
 	alias school='cd /media/Programs/School'
 elif [[ $SYSNAME == "ManjaroLinux" ]]; then
-	alias yquery='yay -Ss'
 	alias off='shutdown 0'
 elif [[ $SYSNAME == "Ubuntu" ]]; then
 	alias gh='cd /mnt/d/Programs/GitHub'

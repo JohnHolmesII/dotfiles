@@ -1,0 +1,4 @@
+#!/bin/sh
+
+(exists 'yay' && yay -Ss) || (echo "Yay not installed" && exit 1)
+
