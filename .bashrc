@@ -17,11 +17,6 @@ PS1="$PS1"'\n'              # new line
 PS1="$PS1"'$ '              # prompt: always $
 export PS1
 
-export SYSNAME=`lsb_release -is 2>/dev/null || uname -o 2>/dev/null || echo UNKOWN`
-export ASAN_SYMBOLIZER_PATH=`which llvm-symbolizer 2>/dev/null`
-
-command -v clang >/dev/null 2>&1 && export CC=clang && export CXX=clang++
-
 if [[ $SYSNAME == "VoidLinux" ]]; then
 	export XDG_RUNTIME_DIR=/var/tmp
 	alias off='sudo shutdown -P'
@@ -45,8 +40,6 @@ elif [[ $SYSNAME == "Msys" ]]; then
 	alias school='cd "D:\Programs\School"'
 	CPPFLAGS=-I/mingw64/include
 	LDFLAGS=-L/mingw64/lib
-elif [[ $SYSNAME == "Android" ]]; then
-	alias get='pkg install'
 elif [[ $SYSNAME == "FreeBSD" ]]; then
 	alias off='sudo shutdown'
 fi
