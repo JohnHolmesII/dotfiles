@@ -1,3 +1,5 @@
-read -p "username: " name
+#!/bin/sh
+
+printf "username: " ; read -r name
 ssh $name@unix.ucsc.edu
 
