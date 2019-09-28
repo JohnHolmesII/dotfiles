@@ -24,12 +24,10 @@ command -v clang >/dev/null 2>&1 && export CC=clang && export CXX=clang++
 
 if [[ $SYSNAME == "VoidLinux" ]]; then
 	export XDG_RUNTIME_DIR=/var/tmp
-	alias get='sudo xbps-install -S'
 	alias query='xbps-query --regex -Rs'
 	alias rem='sudo xbps-remove -R'
 	alias off='sudo shutdown -P'
 elif [[ $SYSNAME == "Arch" ]]; then
-	alias get='yay -Sy'
 	alias query='pacman -Ss'
 	alias yquery='yay -Ss'
 	alias rem='yay -Rs'
@@ -37,13 +35,11 @@ elif [[ $SYSNAME == "Arch" ]]; then
 	alias gh='cd /media/Programs/GitHub'
 	alias school='cd /media/Programs/School'
 elif [[ $SYSNAME == "ManjaroLinux" ]]; then
-	alias get='yay -Sy'
 	alias query='pacman -Ss'
 	alias yquery='yay -Ss'
 	alias rem='yay -Rs'
 	alias off='shutdown 0'
 elif [[ $SYSNAME == "Ubuntu" ]]; then
-	alias get='sudo apt-get install'
 	alias query='apt-cache search --names-only'
 	alias rem='sudo apt-get remove'
 	alias gh='cd /mnt/d/Programs/GitHub'
@@ -64,7 +60,6 @@ elif [[ $SYSNAME == "Android" ]]; then
 	alias rem='pkg uninstall'
 	alias query='pkg search'
 elif [[ $SYSNAME == "FreeBSD" ]]; then
-	alias get='sudo pkg install'
 	alias rem='sudo pkg remove -R'
 	alias query='sudo pkg search'
 	alias off='sudo shutdown'
