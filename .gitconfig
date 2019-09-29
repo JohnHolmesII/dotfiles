@@ -2,7 +2,7 @@
 	email = jedistephen@hotmail.com
 	name = JohnHolmesII
 [credential]
-	helper = !java -Ddebug=false -Djava.net.useSystemProxies=true -jar /home/hurb/.config/gcm/gcm.jar
+	helper = !java -Ddebug=false -Djava.net.useSystemProxies=true -jar "$HOME"/.config/gcm/gcm.jar
 	canFallBackToInsecureStore = true
 [core]
 	autocrlf = input
