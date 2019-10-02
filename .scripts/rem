@@ -1,17 +1,19 @@
 #!/bin/sh
 
+SUDO=$(command -v sudo 2>/dev/null)
+
 case "$PACKAGER" in
 	"yay") yay -Rs "$@"
 	;;
-	"pacman") sudo pacman -Rs "$@"
+	"pacman") $SUDO pacman -Rs "$@"
 	;;
-	"xbps") sudo xbps-remove -R "$@"
+	"xbps") $SUDO xbps-remove -R "$@"
 	;;
-	"apt") sudo apt-get remove "$@"
+	"apt") $SUDO apt-get remove "$@"
 	;;
-	"pkg") sudo pkg remove -R "$@"
+	"pkg") $SUDO pkg remove -R "$@"
 	;;
-	*) echo "get: unknown packager"; exit 1
+	*) echo "rem: unknown packager"; exit 1
 	;;
 esac
 

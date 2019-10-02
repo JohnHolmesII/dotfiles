@@ -1,15 +1,17 @@
 #!/bin/sh
 
+SUDO=$(command -v sudo 2>/dev/null)
+
 case "$PACKAGER" in
 	"yay") yay -Sy "$@"
 	;;
-	"pacman") sudo pacman -Sy "$@"
+	"pacman") $SUDO pacman -Sy "$@"
 	;;
-	"xbps") sudo xbps-install -S "$@"
+	"xbps") $SUDO xbps-install -S "$@"
 	;;
-	"apt") sudo apt-get install "$@"
+	"apt") $SUDO apt-get install "$@"
 	;;
-	"pkg") sudo pkg install "$@"
+	"pkg") $SUDO pkg install "$@"
 	;;
 	*) echo "get: unknown packager"; exit 1
 	;;
