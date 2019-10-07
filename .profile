@@ -2,9 +2,14 @@
 # shellcheck disable=SC1090
 
 SYSNAME=$(lsb_release -is 2>/dev/null || uname -o 2>/dev/null || echo UNKOWN); export SYSNAME
-ASAN_SYMBOLIZER_PATH=$(command -v llvm-symbolizer 2>/dev/null); export ASAN_SYMBOLIZER_PATH
+ASAN_SYMBOLIZER_PATH=$(command -v llvm-symbolizer 2>/dev/null);                export ASAN_SYMBOLIZER_PATH
+WMDIR=/afs/cats.ucsc.edu/courses/cse110a-wm;                                   export WMDIR
 
 [ -d "$HOME/.scripts" ] && export PATH="$HOME/.scripts:$PATH"
+
+case "$HOSTNAME" in
+	unix[1-4].lt.ucsc.edu) export PATH="$WMDIR/bin:$PATH";;
+esac
 
 exists 'nvim'         && export EDITOR='nvim' && alias vim='nvim'
 exists 'less'         && export PAGER='less'
