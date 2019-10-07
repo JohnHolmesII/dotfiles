@@ -8,7 +8,9 @@ WMDIR=/afs/cats.ucsc.edu/courses/cse110a-wm;                                   e
 [ -d "$HOME/.scripts" ] && export PATH="$HOME/.scripts:$PATH"
 
 case "$HOSTNAME" in
-	unix[1-4].lt.ucsc.edu) export PATH="$WMDIR/bin:$PATH";;
+	unix[1-4].lt.ucsc.edu) export PATH="$WMDIR/bin:$PATH"
+	export TERM=xterm
+	;;
 esac
 
 exists 'nvim'         && export EDITOR='nvim' && alias vim='nvim'
