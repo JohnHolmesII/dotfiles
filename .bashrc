@@ -23,11 +23,9 @@ if [[ "$SYSNAME" == "VoidLinux" ]]; then
 	export XDG_RUNTIME_DIR=/var/tmp
 	alias off='sudo shutdown -P'
 elif [[ "$SYSNAME" == "Arch" ]]; then
-	alias gh='cd /media/Programs/GitHub'
-	alias school='cd /media/Programs/School'
+	alias gh='cd /media/Programs'
 elif [[ "$SYSNAME" == "Ubuntu" ]]; then
-	alias gh='cd /mnt/d/Programs/GitHub'
-	alias school='cd /mnt/d/Programs/School'
+	alias gh='cd /mnt/d/Programs'
 	sshd_status=$(service ssh status 2>/dev/null)
 	if [[ "$sshd_status" = *"is not running"* ]]; then
   		sudo service ssh --full-restart
@@ -35,8 +33,7 @@ elif [[ "$SYSNAME" == "Ubuntu" ]]; then
 elif [[ "$SYSNAME" == "Msys" ]]; then
 	export MSYSTEM="MSYS"
 	export PATH="$PATH":/mingw64/bin/
-	alias gh='cd "D:\Programs\GitHub"'
-	alias school='cd "D:\Programs\School"'
+	alias gh='cd "D:\Programs"'
 	export CPPFLAGS=-I/mingw64/include
 	export LDFLAGS=-L/mingw64/lib
 fi
