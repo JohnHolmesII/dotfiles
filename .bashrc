@@ -39,6 +39,9 @@ elif [[ "$SYSNAME" == "Msys" ]]; then
 fi
 
 alias vlg='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
-alias ls='ls -h --group-directories-first --color=auto'
 alias grep='grep --color=auto'
+
+if [ "$SYSNAME" != "Darwin" ]; then
+	alias ls='ls -h --group-directories-first --color=auto'
+fi
 
