@@ -1,11 +1,12 @@
 [user]
-	email = jedistephen@hotmail.com
-	name = JohnHolmesII
+	email = sboyd@circuitdevs.com
+	name = Stephen Boyd
 [credential]
 	helper = !java -Ddebug=false -Djava.net.useSystemProxies=true -jar "$HOME"/.config/gcm/gcm.jar
 	canFallBackToInsecureStore = true
 [core]
 	autocrlf = input
+	excludesfile = /Users/sboyd/.gitignore_global
 [alias]
 	last = diff HEAD^ HEAD
 	undo-commit = reset --soft HEAD^
@@ -18,3 +19,9 @@
     
 [gpg]
 	program = gpg2
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
