@@ -23,6 +23,10 @@ gaps inner 8
     bindsym Mod1+q kill
     # start your launcher
     bindsym $mod+d exec $menu
+    # screenshot
+    bindsym Print exec agrim
+    # screenshot area
+    bindsym $mod+Shift+s exec agrim region
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
