@@ -6,6 +6,7 @@ SYSNAME=$(uname -o 2>/dev/null)        && export $SYSNAME ||
 SYSNAME=$(uname -s 2>/dev/null)        && export $SYSNAME ||
 SYSNAME=UNKNOWN                        && export $SYSNAME
 
+DOTNET_CLI_TELEMETRY_OPTOUT=1
 ASAN_SYMBOLIZER_PATH=$(command -v llvm-symbolizer 2>/dev/null); export ASAN_SYMBOLIZER_PATH
 WMDIR=/afs/cats.ucsc.edu/courses/cse110a-wm;                    export WMDIR
 
