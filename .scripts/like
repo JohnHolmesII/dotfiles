@@ -5,10 +5,17 @@
 
 regex='/^[0-9]*\ +/'
 prog='{ split($0, s, " "); a = ""; for(i = 2; i <= length(s); ++i) a = a " " s[i]; print a}'
+lastcmd=$(history | tail -n2 | head -n1 | awk "$regex $prog")
+scndtolast=$(history | tail -n3 | head -n1 | awk "$regex $prog")
 
 if [ -z "$*" ] || [ ! "$*" = "please" ]; then
 	echo "Hmmm, what's the magic word?"
 else
-	sudo $(history | tail -n2 | head -n1 | awk "$regex $prog")
-fi
+	if [ "$lastcmd" = " like" ]; then
+		runcmd="$scndtolast"
+	else
+		runcmd="$lastcmd"
+	fi
 
+	sudo $runcmd
+fi
