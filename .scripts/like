@@ -1,8 +1,14 @@
 # Can't have a hashbang for history
+# shellcheck shell=sh
+# shellcheck disable=SC2016
+# shellcheck disable=SC2046
 
-if [ -z "$@" ] || [ ! "$@" = "please" ]; then
+regex='/^[0-9]*\ +/'
+prog='{ split($0, s, " "); a = ""; for(i = 2; i <= length(s); ++i) a = a " " s[i]; print a}'
+
+if [ -z "$*" ] || [ ! "$*" = "please" ]; then
 	echo "Hmmm, what's the magic word?"
 else
-	sudo $(echo `history | tail -n2 | head -n1` | sed 's/[0-9]* //')
+	sudo $(history | tail -n2 | head -n1 | awk "$regex $prog")
 fi
 
