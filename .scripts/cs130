@@ -1,0 +1,5 @@
+#!/bin/sh
+
+printf "username: " ; read -r name
+[ -n "$name" ] && ssh "$name"@nogbad.soe.ucsc.edu
+
