@@ -21,9 +21,9 @@ if [ -n "$HOSTNAME" ]; then
 		export LANGUAGE=en_US
 		export LC_ALL=en_US
 		;;
-		nogi?n?b?a?d?) aklog
+		nog*) aklog
 		export LANGUAGE=en_US
-		export LC_ALL=en_US
+		export LC_ALL=en_US.UTF-8
 		;;
 	esac
 fi
