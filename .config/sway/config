@@ -8,6 +8,8 @@ set $term urxvt
 set $menu dmenu-wl_path | dmenu-wl -fn 'Hack' | xargs swaymsg exec
 
 # Output
+output DP-1 pos 0 0
+output HDMI-A-1 pos 2560 0
 output * bg /home/hurb/pictures/Wallpapers/dt.jpg fill
 default_border none
 gaps outer 2
