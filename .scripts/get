@@ -3,9 +3,9 @@
 SUDO=$(command -v sudo 2>/dev/null)
 
 case "$PACKAGER" in
-	"yay") yay -Sy "$@"
+	"yay") yay -Syu "$@"
 	;;
-	"pacman") $SUDO pacman -Syyu "$@"
+	"pacman") $SUDO pacman -Syu "$@"
 	;;
 	"xbps") $SUDO xbps-install -S "$@"
 	;;
