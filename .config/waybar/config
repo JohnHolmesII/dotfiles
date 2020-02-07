@@ -1,28 +1,41 @@
 {
     "layer": "bottom",
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["battery", "network", "clock"],
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "sway/window"
+    ],
+    "modules-right": [
+        "battery",
+        "pulseaudio",
+        "network",
+        "clock"
+    ],
     "sway/window": {
         "max-length": 50
+    },
+    "pulseaudio": {
+        "format": "{volume}% AUD",
+        "format-muted": "M {format_source}"
     },
     "battery": {
         "interval": 60,
         "states": {
-	    "warning": 25,
-	    "critical": 10
-	},
+            "warning": 25,
+            "critical": 10
+        },
         "format": "{capacity}% BAT"
     },
     "network": {
         "format": "{ifname}",
         "format-wifi": "{essid} ({signalStrength}%)",
         "format-ethernet": "{ipaddr}",
-        "format-disconnected": "net down", 
+        "format-disconnected": "net down",
         "max-length": 20
     },
     "clock": {
         "format": "{:%a %d %b %I:%M}"
     }
 }
-

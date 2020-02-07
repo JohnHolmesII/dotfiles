@@ -28,9 +28,14 @@ window#waybar {
 	background-color: #EB4D4B;
 }
 
-#network, #mode, #clock, #battery {
+#pulseaudio, #network, #mode, #clock, #battery {
+    color: #c3c95d;
     padding: 0 10px;
     margin: 0 5px;
+}
+
+#pulseaudio {
+    background-color: #572461;
 }
 
 #mode {
@@ -39,17 +44,14 @@ window#waybar {
 }
 
 #network {
-    color: #d3f5c0;
     background: #763f82;
 }
 
 #clock {
-    color: #d3f5c0;
     background-color: #7b5da9;
 }
 
 #battery {
-    color: #d3f5c0;
     background-color: #380940;
 }
 
