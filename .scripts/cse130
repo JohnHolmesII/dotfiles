@@ -1,5 +1,13 @@
 #!/bin/sh
 
-printf "username: " ; read -r name
-[ -n "$name" ] && ssh "$name"@nogbad.soe.ucsc.edu
+noggin='noggin.soe.ucsc.edu'
+nogbad='nogbad.soe.ucsc.edu'
 
+printf "username: " ; read -r name
+loginCred="$name"@"$nogbad"
+
+if [ "$1" = "get" ]; then
+    [ -n "$2" ] && scp "$loginCred":CSE130-"$2".tar.gz ~/downloads/ || echo no
+elif [ -n "$name" ]; then
+	ssh "$loginCred"
+fi
