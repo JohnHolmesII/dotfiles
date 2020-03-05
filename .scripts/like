@@ -17,5 +17,5 @@ else
 		runcmd="$lastcmd"
 	fi
 
-	sudo $runcmd
+	sudo "$runcmd"
 fi
