@@ -1,0 +1,7 @@
+#!/bin/sh
+
+exists firefox && ffx=firefox
+exists firefox-nightly && ffx=firefox-nightly
+[ -z "$ffx" ] && echo No firefox && exit 1
+
+MOZ_ENABLE_WAYLAND=1 MOZ_WEBRENDER=1 $ffx
