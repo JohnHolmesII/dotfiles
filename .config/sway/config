@@ -10,7 +10,7 @@ set $menu dmenu_path | dmenu -fn 'Hack' | xargs swaymsg exec
 # Output
 output DP-1 pos 0 0
 output HDMI-A-1 pos 2560 410
-output * bg /home/hurb/pictures/Wallpapers/dt.jpg fill
+output * bg /home/hurb/.config/wall.jpg fill
 default_border none
 gaps outer 2
 gaps inner 8
@@ -30,9 +30,9 @@ gaps inner 8
     # screenshot area
     bindsym $mod+Shift+s exec agrim region
 
-	# media keys
+    # media keys
     set $soundctl --no-startup-id pactl
-	# increase volume
+    # increase volume
     bindsym --locked XF86AudioRaiseVolume exec $soundctl set-sink-volume "@DEFAULT_SINK@" +5%
     # decrease volume
     bindsym --locked XF86AudioLowerVolume exec $soundctl set-sink-volume "@DEFAULT_SINK@" -5%
