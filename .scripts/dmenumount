@@ -1,0 +1,12 @@
+#!/bin/sh
+
+mountable=$(lsblk -lp | grep "part $" | awk '{ print $1, "(" $4 ")" }')
+[ -z "$mountable" ] && exit 0
+
+drive=$(echo "$mountable" | dmenu -fn Hack -p "Select drive to mount" | awk '{ print $1 }')
+[ -z "$drive" ] && exit 0
+
+mountPoint=/mnt/$(echo "$drive" | cut -d'/' -f3)
+[ -d "$mountPoint" ] && exit 1
+
+sudo mkdir "$mountPoint" && sudo mount "$drive" "$mountPoint" && exit $?
