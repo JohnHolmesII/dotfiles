@@ -32,28 +32,35 @@ URxvt.cursorUnderline:      false
 ! Pointer
 URxvt.pointerBlank:         true
 
-*background:                rgba:2600/1c00/1400/e600
-*foreground:                #a3adb8
+
+! Terminal Colors
 *fadeColor:                 #002b36
 *pointerColorBackground:    #586e75
 *pointerColorForeground:    #93a1a1
-
-! Terminal Colors
 *foreground:                #a3adb8
-*color0:                    #493829
-*color1:                    #613318
-*color2:                    #404f24
-*color3:                    #a1941d
-*color4:                    #246024
-*color5:                    #9f572b
-*color6:                    #326b62
-*color7:                    #83929f
-*color8:                    #816c5b
-*color9:                    #8f3b1b
-*color10:                   #668d3c
-*color11:                   #dbca69
-*color12:                   #397628
-*color13:                   #af8152
-*color14:                   #7fa292
-*color15:                   #a3adb8
+*background:                rgba:3d00/2300/3e00/e600
 
+! Black
+*color0:                    #493829
+*color8:                    #816c5b
+! Red
+*color1:                    #a13328
+*color9:                    #8f3b1b
+! Green
+*color2:                    #209820
+*color10:                   #55aa3c
+! Yellow
+*color3:                    #a1941d
+*color11:                   #dbca69
+! Blue
+*color4:                    #246024
+*color12:                   #397628
+! Magenta
+*color5:                    #9f572b
+*color13:                   #af8152
+! Cyan
+*color6:                    #327b72
+*color14:                   #7fb2a2
+! White
+*color7:                    #83929f
+*color15:                   #a3adb8
