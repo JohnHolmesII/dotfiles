@@ -15,7 +15,7 @@ URxvt.lineSpace:            0
 ! Fonts
 URxvt.allow_bold:           true
 URxvt*font:                 xft:Hack:pixelsize=13
-URxvt*boldFont:             xft:Hack:bold:pixelsize=13
+URxvt*boldFont:             xft:Hack:pixelsize=13
 
 ! Fix font space
 URxvt*letterSpace:          -1
@@ -41,26 +41,27 @@ URxvt.pointerBlank:         true
 *background:                rgba:3d00/2300/3e00/e600
 
 ! Black
-*color0:                    #493829
-*color8:                    #816c5b
+*color0:                    #393939
+*color8:                    #6a6a6a
 ! Red
-*color1:                    #a13328
-*color9:                    #8f3b1b
+*color1:                    #8f3b1b
+*color9:                    #aa3328
 ! Green
 *color2:                    #209820
 *color10:                   #55aa3c
 ! Yellow
-*color3:                    #a1941d
-*color11:                   #dbca69
+*color3:                    #d8d400
+*color11:                   #f8e502
+#dbca69
 ! Blue
-*color4:                    #246024
-*color12:                   #397628
+*color4:                    #203090
+*color12:                   #4050f0
 ! Magenta
-*color5:                    #9f572b
-*color13:                   #af8152
+*color5:                    #7f448f
+*color13:                   #af33bf
 ! Cyan
-*color6:                    #327b72
-*color14:                   #7fb2a2
+*color6:                    #5088bf
+*color14:                   #30b9bf
 ! White
-*color7:                    #83929f
-*color15:                   #a3adb8
+*color7:                    #a0a0a0
+*color15:                   #e0e0e0

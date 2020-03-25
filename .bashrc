@@ -1,39 +1,41 @@
 #I like my .bashrc file
-# shellcheck shell=bash
+# shellcheck shell=sh
 # shellcheck disable=SC1090
 . "$HOME"/.scripts/git-completion.bash
 . "$HOME"/.scripts/git-prompt.sh
 
-PS1='\[\e]0;\w\a\]'         # title bar
-PS1="$PS1"'\n'              # new line
-PS1="$PS1"'\[\e[36m\]'      # change to cyan
-PS1="$PS1"'\u@\h '          # user@host<space>
-PS1="$PS1"'\[\e[35m\]'      # change to pink
-PS1="$PS1"'$SYSNAME '       # show SYSNAME
-PS1="$PS1"'\[\e[33m\]'      # change to brownish yellow
-PS1="$PS1"'\w'              # current working directory
-PS1="$PS1"'\[\e[34m\]'	    # change color to purple
-PS1="$PS1"'`__git_ps1`'	    # bash function
-PS1="$PS1"'\[\e[0m\]'       # change color
-PS1="$PS1"'\n'              # new line
-PS1="$PS1"'$ '              # prompt: always $
+PS1='\[\e]0;\w\a\]'      # Title bar shows cwd
+PS1="$PS1"'\n'           # New line
+PS1="$PS1"'\[\e[1;36m\]' # Change to cyan (bright)
+PS1="$PS1"'\u@\h '       # user@host<space>
+PS1="$PS1"'\[\e[1;35m\]' # Change to magenta (bright)
+PS1="$PS1"'$SYSNAME '    # Show SYSNAME
+PS1="$PS1"'\[\e[0;33m\]' # Change to yellow
+PS1="$PS1"'\w'           # Current working directory
+PS1="$PS1"'\[\e[1;37m\]' # Change color to white (bright)
+PS1="$PS1"'`__git_ps1`'  # Bash function
+PS1="$PS1"'\[\e[0m\]'    # Reset color
+PS1="$PS1"'\n'           # New line
+PS1="$PS1"'$ '           # Prompt: always $
 export PS1
 
-if [[ "$SYSNAME" == "VoidLinux" ]]; then
-	export XDG_RUNTIME_DIR=/var/tmp
+if [ "$SYSNAME" = "VoidLinux" ]; then
 	alias off='sudo shutdown -P'
-elif [[ "$SYSNAME" == "Arch" ]]; then
+	export XDG_RUNTIME_DIR=/var/tmp
+elif [ "$SYSNAME" = "Arch" ]; then
 	alias gh='cd /media/Programs'
-elif [[ "$SYSNAME" == "Ubuntu" ]]; then
+elif [ "$SYSNAME" = "Ubuntu" ]; then
 	alias gh='cd /mnt/d/Programs'
+
 	sshd_status=$(service ssh status 2>/dev/null)
+
 	if [[ "$sshd_status" = *"is not running"* ]]; then
   		sudo service ssh --full-restart
 	fi
-elif [[ "$SYSNAME" == "Msys" ]]; then
+elif [ "$SYSNAME" = "Msys" ]; then
+	alias gh='cd "D:\Programs"'
 	export MSYSTEM="MSYS"
 	export PATH="$PATH":/mingw64/bin/
-	alias gh='cd "D:\Programs"'
 	export CPPFLAGS=-I/mingw64/include
 	export LDFLAGS=-L/mingw64/lib
 fi
@@ -44,4 +46,3 @@ alias grep='grep --color=auto'
 if [ "$SYSNAME" != "Darwin" ]; then
 	alias ls='ls -h --group-directories-first --color=auto'
 fi
-
