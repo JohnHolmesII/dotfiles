@@ -15,18 +15,18 @@ ASAN_SYMBOLIZER_PATH=$(command -v llvm-symbolizer 2>/dev/null); export ASAN_SYMB
 [ -d "$HOME/.scripts" ] && export PATH="$HOME/.scripts:$PATH"
 
 if [ -n "$HOSTNAME" ]; then
-	case "$HOSTNAME" in
-		unix[1-4].lt.ucsc.edu) export WMDIR=/afs/cats.ucsc.edu/courses/cse110a-wm
-		export PATH="$WMDIR/bin:$PATH"
-		export TERM=xterm
-		export LANGUAGE=en_US
-		export LC_ALL=en_US
-		;;
-		nog*) aklog
-		export LANGUAGE=en_US
-		export LC_ALL=en_US.UTF-8
-		;;
-	esac
+    case "$HOSTNAME" in
+        unix[1-4].lt.ucsc.edu) export WMDIR=/afs/cats.ucsc.edu/courses/cse110a-wm
+        export PATH="$WMDIR/bin:$PATH"
+        export TERM=xterm
+        export LANGUAGE=en_US
+        export LC_ALL=en_US
+        ;;
+        nog*) aklog
+        export LANGUAGE=en_US
+        export LC_ALL=en_US.UTF-8
+        ;;
+    esac
 fi
 
 exists 'nvim'         && export EDITOR='nvim' && alias vim='nvim'
@@ -41,4 +41,3 @@ exists 'clang'        && export CC='clang' && export CXX='clang++'
 [ -f "$HOME/.bashrc" ]  && . "$HOME/.bashrc"
 
 exists 'tinycron' && (killall tinycron 2> /dev/null; (tinycron '@hourly' backupRPCS3 &))
-
