@@ -1,6 +1,6 @@
 #!/bin/sh
 
-case "$PACKAGER" in
+case "$PKGR" in
     "yay") pacman -Ss "$@"
     ;;
     "pacman") pacman -Ss "$@"

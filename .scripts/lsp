@@ -1,9 +1,9 @@
 #!/bin/sh
 
-if [ "$PACKAGER" = "pacman" ]; then
+if [ "$PKGR" = "pacman" ]; then
     pacman -Qett --color=auto | $PAGER
-elif [ "$PACKAGER" = "xbps" ]; then
+elif [ "$PKGR" = "xbps" ]; then
     xbps-query -m | $PAGER
-elif [ "$PACKAGER" = "apt" ]; then
+elif [ "$PKGR" = "apt" ]; then
     apt list --installed
 fi

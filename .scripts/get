@@ -2,7 +2,7 @@
 
 SUDO=$(command -v sudo 2>/dev/null)
 
-case "$PACKAGER" in
+case "$PKGR" in
     "yay") yay -Syu "$@"
     ;;
     "pacman") $SUDO pacman -Syu "$@"

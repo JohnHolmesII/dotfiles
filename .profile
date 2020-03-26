@@ -31,12 +31,16 @@ fi
 
 exists 'nvim'         && export EDITOR='nvim' && alias vim='nvim'
 exists 'less'         && export PAGER='less'
-exists 'pacman'       && export PACKAGER='pacman'
-exists 'yay'          && export PACKAGER='yay'
-exists 'xbps-install' && export PACKAGER='xbps'
-exists 'apt'          && export PACKAGER='apt'
-exists 'pkg'          && export PACKAGER='pkg'
 exists 'clang'        && export CC='clang' && export CXX='clang++'
+
+exists 'pacman'       && export PKGR='pacman'
+exists 'yay'          && export PKGR='yay'
+exists 'xbps-install' && export PKGR='xbps'
+exists 'apt'          && export PKGR='apt'
+exists 'pkg'          && export PKGR='pkg'
+
+exists 'sv'           && export INIT='runit'
+exists 'systemctl'    && export INIT='systemd'
 
 [ -f "$HOME/.bashrc" ]  && . "$HOME/.bashrc"
 
