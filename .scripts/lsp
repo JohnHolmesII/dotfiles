@@ -1,10 +1,9 @@
 #!/bin/sh
 
 if [ "$PACKAGER" = "pacman" ]; then
-	pacman -Qett --color=auto | $PAGER
+    pacman -Qett --color=auto | $PAGER
 elif [ "$PACKAGER" = "xbps" ]; then
-	xbps-query -m | $PAGER
+    xbps-query -m | $PAGER
 elif [ "$PACKAGER" = "apt" ]; then
-	apt list --installed
+    apt list --installed
 fi
-
