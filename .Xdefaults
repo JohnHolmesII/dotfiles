@@ -47,8 +47,8 @@ URxvt.pointerBlank:         true
 *color1:                    #8f3b1b
 *color9:                    #aa3328
 ! Green
-*color2:                    #209820
-*color10:                   #55aa3c
+*color2:                    #209850
+*color10:                   #65bf68
 ! Yellow
 *color3:                    #d8d400
 *color11:                   #f8e502
