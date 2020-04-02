@@ -11,6 +11,8 @@ export SYSNAME
 GPG_TTY=$(tty);                                                 export GPG_TTY
 DOTNET_CLI_TELEMETRY_OPTOUT=1;                                  export DOTNET_CLI_TELEMETRY_OPTOUT
 ASAN_SYMBOLIZER_PATH=$(command -v llvm-symbolizer 2>/dev/null); export ASAN_SYMBOLIZER_PATH
+GIT_PS1_HIDE_IF_PWD_IGNORED=1;                                  export GIT_PS1_HIDE_IF_PWD_IGNORED
+GIT_PS1_SHOWDIRTYSTATE=1;                                       export GIT_PS1_SHOWDIRTYSTATE
 
 [ -d "$HOME/.scripts" ] && export PATH="$HOME/.scripts:$PATH"
 
