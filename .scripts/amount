@@ -7,6 +7,6 @@ drive=$(echo "$mountable" | dmenu -fn Hack -p "Select drive to mount" | awk '{ p
 [ -z "$drive" ] && exit 0
 
 mountPoint=/mnt/$(echo "$drive" | cut -d'/' -f3)
-[ -d "$mountPoint" ] && exit 1
-
-sudo mkdir "$mountPoint" && sudo mount "$drive" "$mountPoint" && exit $?
+[ -d "$mountPoint" ] || sudo mkdir -p "$mountPoint"
+echo "Mounting $drive to $mountPoint"
+sudo mount "$drive" "$mountPoint" && exit $?
