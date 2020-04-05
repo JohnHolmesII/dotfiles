@@ -1,21 +1,18 @@
 # Can't have a hashbang for history
 # shellcheck shell=sh
-# shellcheck disable=SC2016
-# shellcheck disable=SC2046
 
-regex='/^[0-9]*\ +/'
-prog='{ split($0, s, " "); a = ""; for(i = 2; i <= length(s); ++i) a = a " " s[i]; print a}'
-lastcmd=$(history | tail -n2 | head -n1 | awk "$regex $prog")
-scndtolast=$(history | tail -n3 | head -n1 | awk "$regex $prog")
+lastcmd=$(history | tail -n2 | head -n1 | cut -d' ' -f4-)
+scndtolast=$(history | tail -n3 | head -n1 | cut -d' ' -f4-)
 
 if [ -z "$*" ] || [ ! "$*" = "please" ]; then
-	echo "Hmmm, what's the magic word?"
+    echo "Hmmm, what's the magic word?"
 else
-	if [ "$lastcmd" = " like" ]; then
-		runcmd="$scndtolast"
-	else
-		runcmd="$lastcmd"
-	fi
+    if [ "$lastcmd" = " like" ]; then
+        runcmd="$scndtolast"
+    else
+        runcmd="$lastcmd"
+    fi
 
-	sudo "$runcmd"
+    # shellcheck disable=2086
+    sudo $runcmd
 fi
