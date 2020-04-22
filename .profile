@@ -18,7 +18,7 @@ GIT_PS1_SHOWDIRTYSTATE=1;                                       export GIT_PS1_S
 
 if [ -n "$HOSTNAME" ]; then
     case "$HOSTNAME" in
-        unix[1-4].lt.ucsc.edu) export WMDIR=/afs/cats.ucsc.edu/courses/cse110a-wm
+        unix[1-6].lt.ucsc.edu) export WMDIR=/afs/cats.ucsc.edu/courses/cse110a-wm
         export PATH="$WMDIR/bin:$PATH"
         export TERM=xterm
         export LANGUAGE=en_US
