@@ -14,6 +14,7 @@ DOTNET_CLI_TELEMETRY_OPTOUT=1;                                  export DOTNET_CL
 ASAN_SYMBOLIZER_PATH=$(command -v llvm-symbolizer 2>/dev/null); export ASAN_SYMBOLIZER_PATH
 GIT_PS1_HIDE_IF_PWD_IGNORED=1;                                  export GIT_PS1_HIDE_IF_PWD_IGNORED
 GIT_PS1_SHOWDIRTYSTATE=1;                                       export GIT_PS1_SHOWDIRTYSTATE
+_JAVA_AWT_WM_NONREPARENTING=1;                                  export _JAVA_AWT_WM_NONREPARENTING
 
 [ -d "$HOME/.scripts" ] && export PATH="$HOME/.scripts:$PATH"
 
