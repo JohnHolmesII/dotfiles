@@ -47,3 +47,5 @@ alias bc='bc -sqi'
 if [ "$SYSNAME" != "Darwin" ]; then
 	alias ls='ls -h --group-directories-first --color=auto'
 fi
+
+gpgconf --launch gpg-agent

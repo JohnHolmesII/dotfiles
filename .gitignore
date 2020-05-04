@@ -5,12 +5,12 @@
 !.profile
 !.scripts
 !.scripts/*
+!.ssh
+!.ssh/*.pub
+!.ssh/config
 !.config
 !.config/sway
 !.config/sway/*
 !.config/waybar
 !.config/waybar/*
-!.config/gcm
-!.config/gcm/gcm.jar
 !.Xdefaults
-
