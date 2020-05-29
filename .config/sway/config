@@ -8,8 +8,8 @@ set $term urxvt
 set $menu dmenu_path | dmenu -fn 'Hack' | xargs swaymsg exec
 
 # Output
-output DP-1 pos 0 0
-output HDMI-A-1 pos 2560 410
+output HDMI-A-1 pos    0    400
+output DP-1 pos        1920 000
 output * bg /home/hurb/.config/wall.jpg fill
 default_border none
 gaps outer 2
