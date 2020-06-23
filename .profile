@@ -47,5 +47,3 @@ exists 'sv'           && export INIT='runit'
 exists 'systemctl'    && export INIT='systemd'
 
 [ -f "$HOME/.bashrc" ]  && . "$HOME/.bashrc"
-
-exists 'tinycron' && (killall tinycron 2> /dev/null; (tinycron '@hourly' backupRPCS3 &))
