@@ -2,6 +2,8 @@
 
 if [ "$PKGR" = "pacman" ]; then
     pacman -Qett --color=auto | $PAGER
+elif [ "$PKGR" = "yay" ]; then
+	yay -Qett --color=auto | $PAGER
 elif [ "$PKGR" = "xbps" ]; then
     xbps-query -m | $PAGER
 elif [ "$PKGR" = "apt" ]; then
