@@ -30,7 +30,7 @@ elif [ "$SYSNAME" = "Ubuntu" ]; then
 	sshd_status=$(service ssh status 2>/dev/null)
 
 	if [[ "$sshd_status" = *"is not running"* ]]; then
-  		sudo service ssh --full-restart
+		sudo service ssh --full-restart >/dev/null 2>&1
 	fi
 elif [ "$SYSNAME" = "Msys" ]; then
 	alias gh='cd "D:\Programs"'
