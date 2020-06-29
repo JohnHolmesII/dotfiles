@@ -1,0 +1,109 @@
+#!/bin/sh
+
+# This script is based on the getopt sample provided by
+# utils-linux
+
+is_proper_getopt=$(getopt -T || echo "$?")
+if [ "$is_proper_getopt" != "4" ]; then
+    echo 'getopt is outdated. Need enhanced getopt.' >&2
+    exit 1
+fi
+
+# We need TEMP as the 'eval set --' would nuke the return value of getopt.
+short_opts='iofl:d:h'
+long_opts='in,out,filter,loops:,display:,help,selection:,version,silent,quiet,verbose'
+TEMP=$(getopt -a -o "$short_opts" --long "$long_opts" -n 'xclip-wsl' -- "$@")
+
+# shellcheck disable=SC2181
+if [ $? -ne 0 ]; then
+    echo 'Terminating...' >&2
+    exit 1
+fi
+
+# Note the quotes around "$TEMP": they are essential!
+eval set -- "$TEMP"
+unset TEMP
+
+from_stdin="true"
+to_stdout=
+
+# Set up handlers for all xclip options, in an attempt to disguise ourselves
+while true; do
+    case "$1" in
+        '-i'|'-in'|'--in')
+            from_stdin="true"
+            shift
+            continue
+        ;;
+        '-o'|'-out'|'--out')
+            to_stdout="true"
+            shift
+            continue
+        ;;
+        '-f'|'-filter'|'--filter')
+            shift
+            continue
+        ;;
+        '-h'|'-help'|'--help')
+            echo 'Just read the script'
+            exit 0
+        ;;
+        '-l'|'-loops'|'--loops')
+            shift 2
+            continue
+        ;;
+        '-d'|'-display'|'--display')
+            shift 2
+            continue
+        ;;
+        '-selection'|'--selection')
+            shift 2
+            continue
+        ;;
+        '-version'|'--version')
+            echo 'Version uhhh 1 I guess'
+            shift
+            continue
+        ;;
+        '-silent'|'--silent')
+            shift
+            continue
+        ;;
+        '-quiet'|'--quiet')
+            shift
+            continue
+        ;;
+        '-verbose'|'--verbose')
+            shift
+            continue
+        ;;
+        '--')
+            shift
+            break
+        ;;
+        *)
+            echo "Internal error!: $@" >&2
+            exit 1
+        ;;
+    esac
+done
+
+my_report=
+
+if [ "$from_stdin" = "true" ]; then
+    my_report=$(cat)
+else
+    for arg; do
+        if [ -z "$my_report" ]; then
+            my_report="$arg"
+        else
+            my_report="$my_report $arg"
+        fi
+    done
+fi
+
+if [ "$to_stdout" = "true" ]; then
+    echo "$my_report"
+else
+    echo "$my_report" | iconv -f utf-8 -t utf-16le | clip.exe
+fi
