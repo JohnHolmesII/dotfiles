@@ -48,4 +48,9 @@ if [ "$SYSNAME" != "Darwin" ]; then
 	alias ls='ls -h --group-directories-first --color=auto'
 fi
 
-gpgconf --launch gpg-agent
+exists gpgconf && gpgconf --launch gpg-agent
+
+if [ -z "$SSH_AGENT_PID" ]; then
+	eval $(ssh-agent -s)
+	ssh-add ~/.ssh/id_rsa
+fi
