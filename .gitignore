@@ -7,6 +7,7 @@
 !.scripts/*
 !.ssh
 !.ssh/*.pub
+.ssh/id_rsa.pub
 !.ssh/config
 !.config
 !.config/sway
