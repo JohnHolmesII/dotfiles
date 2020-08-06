@@ -10,7 +10,8 @@ set $menu dmenu_path | dmenu -fn 'Hack' | xargs swaymsg exec
 # Output
 output HDMI-A-1 pos    0    400
 output DP-1 pos        1920 000
-output * bg /home/hurb/.config/wall.jpg fill
+output HDMI-A-1 bg /home/hurb/.config/wall_small.jpg fill
+output DP-1     bg /home/hurb/.config/wall.jpg       fill
 default_border none
 gaps outer 0
 gaps inner 8
