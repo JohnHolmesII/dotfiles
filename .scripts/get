@@ -9,7 +9,12 @@ case "$PKGR" in
     ;;
     "xbps") $SUDO xbps-install -S "$@"
     ;;
-    "apt") $SUDO apt-get install "$@"
+    "apt")
+        if [ -z "$1" ]; then
+            $SUDO apt-get update && $SUDO apt-get upgrade
+        else
+            $SUDO apt-get install "$@"
+        fi
     ;;
     "pkg") $SUDO pkg install "$@"
     ;;
