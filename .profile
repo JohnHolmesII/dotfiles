@@ -33,7 +33,7 @@ if [ -n "$HOSTNAME" ]; then
     esac
 fi
 
-exists 'nvim'         && export EDITOR='nvim' && alias vim='nvim'
+exists 'nvim'         && export EDITOR='nvim'
 exists 'less'         && export PAGER='less'
 exists 'clang'        && export CC='clang' && export CXX='clang++'
 

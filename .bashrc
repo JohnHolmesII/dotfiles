@@ -43,6 +43,7 @@ fi
 alias vlg='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
 alias grep='grep --color=auto'
 alias bc='bc -sqi'
+exists 'nvim' && alias vim='nvim'
 
 if [ "$SYSNAME" != "Darwin" ]; then
 	alias ls='ls -h --group-directories-first --color=auto'
