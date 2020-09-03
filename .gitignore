@@ -10,8 +10,7 @@
 .ssh/id_rsa.pub
 !.ssh/config
 !.config
-!.config/sway
-!.config/sway/*
+!.config/sway/config
 !.config/waybar
 !.config/waybar/*
 !.Xdefaults
