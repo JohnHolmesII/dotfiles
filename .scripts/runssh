@@ -1,7 +1,7 @@
 #!/bin/sh
 
-exists ssh-agent || exit 1
-pgrep ssh-agent && exit 1
+exists ssh-agent || return 1
+pgrep ssh-agent && return 1
 
 eval $(ssh-agent -s)
 
