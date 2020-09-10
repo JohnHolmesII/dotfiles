@@ -22,7 +22,7 @@ export PS1
 if [ "$SYSNAME" = "VoidLinux" ]; then
 	alias off='sudo shutdown -P'
 	export XDG_RUNTIME_DIR=/var/tmp
-elif [ "$SYSNAME" = "Arch" ]; then
+elif [ "$SYSNAME" = "Arch" ] || [ "$SYSNAME" = "Artix" ]; then
 	alias gh='cd /media/Programs'
 elif [ "$SYSNAME" = "Ubuntu" ]; then
 	alias gh='cd /mnt/d/Programs'
