@@ -9,6 +9,8 @@ case "$PKGR" in
     ;;
     "apt") apt-cache search --names-only "$@"
     ;;
+    "apk") apk search "$@"
+    ;;
     "pkg") pkg search "$@"
     ;;
     *) echo "get: unknown packager"; exit 1

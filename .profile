@@ -9,12 +9,16 @@ SYSNAME=UNKNOWN
 export SYSNAME
 
 GPG_TTY=$(tty);                                                 export GPG_TTY
-SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket);          export SSH_AUTH_SOCK
 DOTNET_CLI_TELEMETRY_OPTOUT=1;                                  export DOTNET_CLI_TELEMETRY_OPTOUT
 ASAN_SYMBOLIZER_PATH=$(command -v llvm-symbolizer 2>/dev/null); export ASAN_SYMBOLIZER_PATH
 GIT_PS1_HIDE_IF_PWD_IGNORED=1;                                  export GIT_PS1_HIDE_IF_PWD_IGNORED
 GIT_PS1_SHOWDIRTYSTATE=1;                                       export GIT_PS1_SHOWDIRTYSTATE
 _JAVA_AWT_WM_NONREPARENTING=1;                                  export _JAVA_AWT_WM_NONREPARENTING
+
+if command -v gpgconf >/dev/null 2>&1; then
+    SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    export SSH_AUTH_SOCK
+fi
 
 [ -d "$HOME/.scripts" ] && export PATH="$HOME/.scripts:$PATH"
 
@@ -41,6 +45,7 @@ exists 'pacman'       && export PKGR='pacman'
 exists 'yay'          && export PKGR='yay'
 exists 'xbps-install' && export PKGR='xbps'
 exists 'apt'          && export PKGR='apt'
+exists 'apk'          && export PKGR='apk'
 exists 'pkg'          && export PKGR='pkg'
 
 exists 'sv'           && export INIT='runit'

@@ -11,6 +11,8 @@ case "$PKGR" in
     ;;
     "apt") $SUDO apt-get remove "$@"
     ;;
+    "apk") $SUDO apk del "$@"
+    ;;
     "pkg") $SUDO pkg remove -R "$@"
     ;;
     *) echo "rem: unknown packager"; exit 1

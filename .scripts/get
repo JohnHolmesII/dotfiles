@@ -9,6 +9,13 @@ case "$PKGR" in
     ;;
     "xbps") $SUDO xbps-install -S "$@"
     ;;
+    "apk")
+        if [ -z "$1" ]; then
+            $SUDO apk update && $SUDO apk upgrade
+        else
+            $SUDO apk add "$@"
+        fi
+    ;;
     "apt")
         if [ -z "$1" ]; then
             $SUDO apt-get update && $SUDO apt-get upgrade
