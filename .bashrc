@@ -1,8 +1,17 @@
 #I like my .bashrc file
 # shellcheck shell=sh
 # shellcheck disable=SC1090
-. "$HOME"/.scripts/git-completion.bash
-. "$HOME"/.scripts/git-prompt.sh
+
+[ -n "$BASHRC_IS_SOURCED" ] && return 0
+BASHRC_IS_SOURCED=true; export BASHRC_IS_SOURCED
+
+if [ -n "$HAVE_SCRIPTS" ]; then
+    . git-completion.bash
+    . git-prompt.sh
+fi
+
+GPG_TTY=$(tty);                                        export GPG_TTY
+SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket); export SSH_AUTH_SOCK
 
 PS1='\[\e]0;\w\a\]'      # Title bar shows cwd
 PS1="$PS1"'\n'           # New line
