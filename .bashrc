@@ -2,9 +2,6 @@
 # shellcheck shell=sh
 # shellcheck disable=SC1090
 
-[ -n "$BASHRC_IS_SOURCED" ] && return 0
-BASHRC_IS_SOURCED=true; export BASHRC_IS_SOURCED
-
 if [ -n "$HAVE_SCRIPTS" ]; then
     . git-completion.bash
     . git-prompt.sh
