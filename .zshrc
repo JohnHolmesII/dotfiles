@@ -1,5 +1,3 @@
-#!/usr/bin/zsh
-
 zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' file-sort name
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
