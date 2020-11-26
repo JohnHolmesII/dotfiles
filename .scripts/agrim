@@ -1,9 +1,13 @@
 #!/bin/sh
 
-run=`exists grim && exists wl-copy`
+run="$(exists grim && exists wl-copy && exists slurp && echo 1)"
 
-if [ run ]; then
-	grim - | wl-copy
+if [ -n "$run" ]; then
+	if [ "$1" = "region" ]; then
+		grim -g "$(slurp)" - | wl-copy
+	else
+		grim - | wl-copy
+	fi
 else
 	echo "Can't use agrim"
 	exit 1

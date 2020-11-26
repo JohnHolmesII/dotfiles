@@ -1,4 +1,7 @@
 #!/bin/sh
 
-sudo shutdown now
-
+if [ "$INIT" = "runit" ]; then
+    sudo shutdown -P now
+elif [ "$INIT" = "systemd" ]; then
+    sudo shutdown now
+fi

@@ -2,18 +2,29 @@
 
 SUDO=$(command -v sudo 2>/dev/null)
 
-case "$PACKAGER" in
-	"yay") yay -Sy "$@"
-	;;
-	"pacman") $SUDO pacman -Sy "$@"
-	;;
-	"xbps") $SUDO xbps-install -S "$@"
-	;;
-	"apt") $SUDO apt-get install "$@"
-	;;
-	"pkg") $SUDO pkg install "$@"
-	;;
-	*) echo "get: unknown packager"; exit 1
-	;;
+case "$PKGR" in
+    "yay") yay -Syu "$@"
+    ;;
+    "pacman") $SUDO pacman -Syu "$@"
+    ;;
+    "xbps") $SUDO xbps-install -S "$@"
+    ;;
+    "apk")
+        if [ -z "$1" ]; then
+            $SUDO apk update && $SUDO apk upgrade
+        else
+            $SUDO apk add "$@"
+        fi
+    ;;
+    "apt")
+        if [ -z "$1" ]; then
+            $SUDO apt-get update && $SUDO apt-get upgrade
+        else
+            $SUDO apt-get install "$@"
+        fi
+    ;;
+    "pkg") $SUDO pkg install "$@"
+    ;;
+    *) echo "get: unknown packager"; exit 1
+    ;;
 esac
-

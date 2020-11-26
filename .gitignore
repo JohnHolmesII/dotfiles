@@ -1,16 +1,17 @@
-*
-!.gitignore
-!.gitconfig
-!.bashrc
-!.profile
-!.scripts
-!.scripts/*
-!.config
-!.config/sway
-!.config/sway/*
-!.config/waybar
-!.config/waybar/*
-!.config/gcm
-!.config/gcm/gcm.jar
-!.Xdefaults
+/*
+!/.gitignore
 
+# Files in this dir
+!/.gitconfig
+!/.git-prompt.sh
+!/.git-completion.bash
+!/.git-completion.tcsh
+!/.bashrc
+!/.zshrc
+!/.profile
+
+# Lower dirs
+!/.config
+!/.scripts
+!/.ssh
+!/.zsh

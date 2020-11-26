@@ -1,8 +1,18 @@
 # Can't have a hashbang for history
+# shellcheck shell=sh
 
-if [ -z "$@" ] || [ ! "$@" = "please" ]; then
-	echo "Hmmm, what's the magic word?"
+lastcmd=$(history | tail -n2 | head -n1 | cut -d' ' -f4-)
+scndtolast=$(history | tail -n3 | head -n1 | cut -d' ' -f4-)
+
+if [ -z "$*" ] || [ ! "$*" = "please" ]; then
+    echo "Hmmm, what's the magic word?"
 else
-	sudo $(echo `history | tail -n2 | head -n1` | sed 's/[0-9]* //')
-fi
+    if [ "$lastcmd" = " like" ]; then
+        runcmd="$scndtolast"
+    else
+        runcmd="$lastcmd"
+    fi
 
+    # shellcheck disable=2086
+    sudo $runcmd
+fi
