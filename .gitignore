@@ -1,16 +1,12 @@
-*
-!.gitignore
-!.gitconfig
-!.bashrc
-!.profile
-!.scripts
-!.scripts/*
-!.ssh
-!.ssh/*.pub
-.ssh/id_rsa.pub
-!.ssh/config
-!.config
-!.config/sway/config
-!.config/waybar
-!.config/waybar/*
-!.Xdefaults
+/*
+!/.gitignore
+
+# Files in this dir
+!/.gitconfig
+!/.bashrc
+!/.profile
+
+# Lower dirs
+!/.config
+!/.scripts
+!/.ssh
