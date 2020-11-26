@@ -32,5 +32,3 @@ exists 'pkg'          && export PKGR='pkg'
 
 exists 'sv'           && export INIT='runit'
 exists 'systemctl'    && export INIT='systemd'
-
-[ -f "$HOME/.bashrc" ]  && . "$HOME/.bashrc"

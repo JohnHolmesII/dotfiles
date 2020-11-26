@@ -3,10 +3,15 @@
 
 # Files in this dir
 !/.gitconfig
+!/.git-prompt.sh
+!/.git-completion.bash
+!/.git-completion.tcsh
 !/.bashrc
+!/.zshrc
 !/.profile
 
 # Lower dirs
 !/.config
 !/.scripts
 !/.ssh
+!/.zsh
