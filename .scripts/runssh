@@ -1,8 +1,0 @@
-#!/bin/sh
-
-exists ssh-agent || return 1
-pgrep ssh-agent && return 1
-
-eval $(ssh-agent -s)
-
-ssh-add ~/.ssh/id_rsa

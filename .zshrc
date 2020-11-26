@@ -29,7 +29,6 @@ fpath=(~/.zsh $fpath)
 . "$HOME/.git-prompt.sh"
 
 GPG_TTY=$(tty);                                        export GPG_TTY
-SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket); export SSH_AUTH_SOCK
 
 setopt PROMPT_SUBST                 # Enable prompt expansion/calls
 PS1=$'\e]0;[%l] %~\a'               # Set title bar to tty and cwd
@@ -78,3 +77,4 @@ if [ "$SYSNAME" != "Darwin" ]; then
 fi
 
 exists gpgconf && gpgconf --launch gpg-agent
+alias sway='ssh-agent sway'
