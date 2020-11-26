@@ -2,11 +2,10 @@
 # shellcheck shell=sh
 # shellcheck disable=SC1090
 
-if [ -n "$HAVE_SCRIPTS" ]; then
-    . git-completion.bash
-    . git-prompt.sh
-fi
+. .git-completion.bash
+. .git-prompt.sh
 
+SHELL=$(command -v bash || echo /bin/sh);              export SHELL
 GPG_TTY=$(tty);                                        export GPG_TTY
 SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket); export SSH_AUTH_SOCK
 
