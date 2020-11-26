@@ -12,7 +12,16 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd nomatch notify
 unsetopt extendedglob
+
 bindkey -v
+bindkey '\e[3~' delete-char
+bindkey '\e'    self-insert
+bindkey '\e[C'  forward-char
+bindkey '\e[D'  backward-char
+bindkey '^?'    backward-delete-char
+bindkey '\e[P'  delete-char
+bindkey '\e[H'  beginning-of-line
+bindkey '\e[4~' end-of-line
 
 [ -z "$PROFILE_IS_SOURCED" ] && . "$HOME/.profile"
 
