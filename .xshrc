@@ -1,0 +1,23 @@
+# shellcheck shell=sh
+# shellcheck disable=SC1090
+
+GPG_TTY=$(tty); export GPG_TTY
+
+if [ "$SYSNAME" = "VoidLinux" ]; then
+	export XDG_RUNTIME_DIR=/var/tmp
+elif [ "$SYSNAME" = "Ubuntu" ]; then
+	sshd_status=$(service ssh status 2>/dev/null)
+
+	if [[ "$sshd_status" = *"is not running"* ]]; then
+		sudo service ssh --full-restart >/dev/null 2>&1
+	fi
+elif [ "$SYSNAME" = "Msys" ]; then
+	export MSYSTEM="MSYS"
+	export PATH="$PATH":/mingw64/bin/
+	export CPPFLAGS=-I/mingw64/include
+	export LDFLAGS=-L/mingw64/lib
+fi
+
+exists gpgconf && gpgconf --launch gpg-agent
+
+. "$HOME/.aliasrc"

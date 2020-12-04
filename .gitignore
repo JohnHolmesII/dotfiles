@@ -8,6 +8,8 @@
 !/.git-completion.tcsh
 !/.bashrc
 !/.zshrc
+!/.aliasrc
+!/.xshrc
 !/.profile
 
 # Lower dirs

@@ -28,8 +28,6 @@ bindkey '\e[4~' end-of-line
 fpath=(~/.zsh $fpath)
 . "$HOME/.git-prompt.sh"
 
-GPG_TTY=$(tty);                                        export GPG_TTY
-
 setopt PROMPT_SUBST                 # Enable prompt expansion/calls
 PS1=$'\e]0;[%l] %~\a'               # Set title bar to tty and cwd
 PS1="$PS1"$'\n'                     # New line
@@ -46,35 +44,4 @@ PS1="$PS1"$'\n'                     # New line
 PS1="$PS1$ "                        # Prompt: always $
 export PS1
 
-if [ "$SYSNAME" = "VoidLinux" ]; then
-	alias off='sudo shutdown -P'
-	export XDG_RUNTIME_DIR=/var/tmp
-elif [ "$SYSNAME" = "Arch" ] || [ "$SYSNAME" = "Artix" ]; then
-	alias gh='cd /media/Programs'
-elif [ "$SYSNAME" = "Ubuntu" ]; then
-	alias gh='cd /mnt/d/Programs'
-
-	sshd_status=$(service ssh status 2>/dev/null)
-
-	if [[ "$sshd_status" = *"is not running"* ]]; then
-		sudo service ssh --full-restart >/dev/null 2>&1
-	fi
-elif [ "$SYSNAME" = "Msys" ]; then
-	alias gh='cd "D:\Programs"'
-	export MSYSTEM="MSYS"
-	export PATH="$PATH":/mingw64/bin/
-	export CPPFLAGS=-I/mingw64/include
-	export LDFLAGS=-L/mingw64/lib
-fi
-
-alias vlg='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
-alias grep='grep --color=auto'
-alias bc='bc -sqi'
-exists 'nvim' && alias vim='nvim'
-
-if [ "$SYSNAME" != "Darwin" ]; then
-	alias ls='ls -h --group-directories-first --color=auto'
-fi
-
-exists gpgconf && gpgconf --launch gpg-agent
-alias sway='ssh-agent sway'
+. "$HOME/.xshrc"

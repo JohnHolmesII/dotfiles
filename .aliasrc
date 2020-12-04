@@ -1,0 +1,15 @@
+case "$SYSNAME" in
+	"Artix") alias gh='cd /media/Programs';;
+	"Ubuntu") alias gh='cd /mnt/d/Programs';;
+	"Msys") alias gh='cd D:\Programs';;
+esac
+
+alias vlg='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
+alias grep='grep --color=auto'
+alias bc='bc -sqi'
+alias sway='ssh-agent sway'
+exists 'nvim' && alias vim='nvim'
+
+if [ "$SYSNAME" != "Darwin" ]; then
+	alias ls='ls -h --group-directories-first --color=auto'
+fi
