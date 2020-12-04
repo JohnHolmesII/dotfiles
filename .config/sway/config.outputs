@@ -1,3 +1,5 @@
+output * bg ~/.config/wall.jpg fill
+
 output HDMI-A-1 {
     bg ~/.config/wall-small.jpg fill
     pos 0 400
@@ -5,7 +7,6 @@ output HDMI-A-1 {
 workspace 1 output HDMI-A-1
 
 output DP-1 {
-    bg ~/.config/wall.jpg fill
     adaptive_sync on
     pos 1920 0 
 }
