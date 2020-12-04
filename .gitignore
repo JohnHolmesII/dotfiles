@@ -13,5 +13,7 @@
 # Lower dirs
 !/.config
 !/.scripts
-!/.ssh
 !/.zsh
+
+# Loose files
+!/.ssh/config
