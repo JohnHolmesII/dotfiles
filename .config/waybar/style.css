@@ -25,10 +25,10 @@ window#waybar {
 }
 
 #workspaces button.urgent {
-	background-color: #EB4D4B;
+    background-color: #EB4D4B;
 }
 
-#pulseaudio, #network, #mode, #clock, #battery {
+#pulseaudio, #network, #mode, #clock, #battery, #backlight {
     color: #c3c95d;
     padding: 0 10px;
     margin: 0 5px;
@@ -51,6 +51,10 @@ window#waybar {
     background-color: #7b5da9;
 }
 
+#backlight {
+    background-color: #777777;
+}
+
 #battery {
     background-color: #380940;
 }
@@ -71,7 +75,7 @@ window#waybar {
     background: #f53c3c;
     color: white;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 0.2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;

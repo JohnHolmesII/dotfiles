@@ -8,6 +8,7 @@
         "sway/window"
     ],
     "modules-right": [
+        "backlight",
         "battery",
         "pulseaudio",
         "network",
@@ -19,6 +20,12 @@
     "pulseaudio": {
         "format": "{volume}% AUD",
         "format-muted": "M {format_source}"
+    },
+    "backlight": {
+        "device": "amdgpu_bl0",
+	"format": "{percent}% BAC",
+	"on-scroll-up": "light -A 1",
+	"on-scroll-down": "light -U 1"
     },
     "battery": {
         "interval": 60,
