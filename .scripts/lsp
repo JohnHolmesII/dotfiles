@@ -3,9 +3,9 @@
 if [ "$PKGR" = "pacman" ]; then
     pacman -Qett --color=auto | $PAGER
 elif [ "$PKGR" = "yay" ]; then
-	yay -Qett --color=auto | $PAGER
+    yay -Qett --color=auto | $PAGER
 elif [ "$PKGR" = "xbps" ]; then
     xbps-query -m | $PAGER
 elif [ "$PKGR" = "apt" ]; then
-    apt list --installed
+    apt-mark showmanual | $PAGER
 fi
