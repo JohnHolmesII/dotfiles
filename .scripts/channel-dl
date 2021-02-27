@@ -1,0 +1,5 @@
+#!/bin/sh
+
+[ -z "$1" ] && echo "Need a url" && exit 1
+
+youtube-dl -ciw -o "%(title)s.%(ext)s" -v "$1"
