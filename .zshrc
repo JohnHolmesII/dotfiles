@@ -22,6 +22,7 @@ bindkey '^?'    backward-delete-char
 bindkey '\e[P'  delete-char
 bindkey '\e[H'  beginning-of-line
 bindkey '\e[4~' end-of-line
+bindkey '^R'    history-incremental-search-backward
 
 [ -z "$PROFILE_IS_SOURCED" ] && . "$HOME/.profile"
 
