@@ -2,4 +2,4 @@
 
 [ -z "$1" ] && echo "Need a url" && exit 1
 
-youtube-dl -ciw -o "%(title)s.%(ext)s" -v "$1"
+youtube-dl -f 401/315/313+251 -ciw -o "%(title)s.%(ext)s" -v "$1"
