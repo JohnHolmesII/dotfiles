@@ -16,6 +16,7 @@
 !/.config
 !/.scripts
 !/.zsh
+!/.gnupg
 
 # Loose files
 !/.ssh/config
