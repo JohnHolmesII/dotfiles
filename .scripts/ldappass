@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pass show -c accounts.google.com/stephen.boyd@sohonet.com

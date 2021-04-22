@@ -1,0 +1,7 @@
+#!/bin/sh
+
+[ "$#" != "1" ] && (echo Usage: "$0 <hostname>"; exit 1)
+
+dest_host="$1"
+pass show -c sudo
+ssh "$dest_host"

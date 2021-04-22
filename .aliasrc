@@ -1,3 +1,5 @@
+# shellcheck shell=sh
+
 case "$SYSNAME" in
 	"Artix") alias gh='cd /media/Programs';;
 	"Ubuntu") alias gh='cd /mnt/d/Programs';;
@@ -11,5 +13,8 @@ exists 'nvim' && alias vim='nvim'
 
 if [ "$SYSNAME" != "Darwin" ]; then
 	alias ls='ls -h --group-directories-first --color=auto'
-    alias ll='ls -Alh'
+	alias ll='ls -Alh --group-directories-first --color=auto'
+else
+	alias ls='ls -Gh'
+	alias ll='CLICOLOR_FORCE=1 ls -AlhG'
 fi

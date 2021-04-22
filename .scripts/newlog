@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <description of what is logged>"
+    exit 1
+fi
+
+die()
+{
+    echo "$1"
+    exit 1
+}
+
+msg="$1"
+current_time="$(date +"%s" | rev)"
+current_folder="$(date +"%y/%m/%d")"
+
+cd ~/logs || die "Can't cd to logs folder"
+mkdir -p "$current_folder" && cd "$current_folder"
+filename="$current_time-$msg.log"
+touch "$filename"
+code "$filename"

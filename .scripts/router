@@ -1,0 +1,7 @@
+#!/bin/sh
+
+[ "$#" != "1" ] && (echo Usage: "$0 <router hostname>"; exit 1)
+
+dest_host="$1"
+pass show -c router
+ssh "stephen.boyd@$dest_host"

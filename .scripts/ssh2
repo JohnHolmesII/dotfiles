@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ssh "$(host "$1" | cut -d' ' -f4)"

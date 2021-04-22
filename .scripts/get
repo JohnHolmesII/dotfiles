@@ -25,6 +25,13 @@ case "$PKGR" in
     ;;
     "pkg") $SUDO pkg install "$@"
     ;;
+    "port")
+        if [ -z "$1" ]; then
+            $SUDO port selfupdate && sudo port upgrade outdated
+        else
+            $SUDO port install -c "$@"
+        fi
+    ;;
     *) echo "get: unknown packager"; exit 1
     ;;
 esac

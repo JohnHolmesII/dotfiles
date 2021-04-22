@@ -7,15 +7,14 @@
 !/.git-completion.bash
 !/.git-completion.tcsh
 !/.bashrc
-!/.zshrc
 !/.aliasrc
 !/.xshrc
 !/.profile
+!/.inputrc
 
 # Lower dirs
 !/.config
 !/.scripts
-!/.zsh
 !/.gnupg
 
 # Loose files

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+[ -z "$1" ] && echo "Usage: $0 <hostname>" && exit 1
+
+hostname=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+ipaddr=$(host "$hostname" | cut -d' ' -f4)
+echo $hostname $ipaddr
+
+gsed -i.bak "s/^$hostname.*//g" ~/.ssh/known_hosts
+gsed -i.bak_ip "s/^$ipaddr.*//g" ~/.ssh/known_hosts

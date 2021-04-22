@@ -1,0 +1,9 @@
+#!/bin/sh
+
+[ -z "$1" ] && exit 1
+
+puppet_role="$1"
+
+curl -vvv 'http://db.puppet.sohonet.com:8081/pdb/query/v4' \
+  -H 'Content-Type:application/json' \
+  -d "{'query': 'inventory { facts.puppet_role = \"$puppet_role\" }'}"

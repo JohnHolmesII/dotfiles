@@ -13,6 +13,8 @@ case "$PKGR" in
     ;;
     "pkg") pkg search "$@"
     ;;
+    "port") port search "$@"
+    ;;
     *) echo "get: unknown packager"; exit 1
     ;;
 esac

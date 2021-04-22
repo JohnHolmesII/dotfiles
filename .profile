@@ -19,8 +19,14 @@ _JAVA_AWT_WM_NONREPARENTING=1;                                  export _JAVA_AWT
 MOZ_ENABLE_WAYLAND=1;                                           export MOZ_ENABLE_WAYLAND
 MOZ_DBUS_REMOTE=1;                                              export MOZ_DBUS_REMOTE
 XDG_CURRENT_DESKTOP=sway;                                       export XDG_CURRENT_DESKTOP
+LSCOLORS='ExGxdxbxcxegedabagacad';                              export LSCOLORS
 
-[ -d "$HOME/.scripts" ] && export PATH="$HOME/.scripts:$PATH" && HAVE_SCRIPTS=true && export HAVE_SCRIPTS
+export PATH="$HOME/.scripts:$PATH"
+
+if [ "$SYSNAME" = "Darwin" ]; then
+        PATH="/opt/local/bin:/opt/local/sbin:$PATH"; export PATH
+        [ -d "/opt/local/lib/mariadb/bin" ] && PATH="/opt/local/lib/mariadb/bin:$PATH" && export PATH
+fi
 
 exists 'nvim'         && export EDITOR='nvim'
 exists 'less'         && export PAGER='less'
@@ -32,6 +38,7 @@ exists 'xbps-install' && export PKGR='xbps'
 exists 'apt'          && export PKGR='apt'
 exists 'apk'          && export PKGR='apk'
 exists 'pkg'          && export PKGR='pkg'
+exists 'port'         && export PKGR='port'
 
 exists 'sv'           && export INIT='runit'
 exists 'systemctl'    && export INIT='systemd'

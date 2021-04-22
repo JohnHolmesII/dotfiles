@@ -1,0 +1,4 @@
+#!/bin/sh
+
+pass show -c dbpass
+ssh XN-XSVM-S-3-LDP01-GB

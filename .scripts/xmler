@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+
+# xmler-api --------------------------------------------------------
+# msil/Micky Silas, 2017                          https://msilas.net
+
+
+from pprint import pprint
+import sys
+import os
+import re
+import json
+import argparse
+
+try:
+  from urllib.request import urlopen
+except ImportError:
+  from urllib2 import urlopen
+
+
+# Colors and that
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+def maxlen(key, matches):
+    ''' return maximum length of a value in list of dicts '''
+    key_list = [d[key] for d in matches if key in d]
+    # Description field is blank from time to time
+    key_list = [str(i or ' '*4) for i in key_list]
+    return len(max(key_list, key=len))
+
+def print_header(outformat, matches):
+    fields = ['#', 'Hostname', 'IP', 'Description', 'IPMI']
+    if outformat == "csv":
+        print(",".join(fields[1:]))
+    else:
+        sys.stdout.write(bcolors.WARNING)
+        print(("{:5s} {:%ds} {:17s} {:%ds} {:20s}" % (maxlen('@hostname', matches) + 2, maxlen('description', matches) + 2)).format('#', 'Hostname', 'IP', 'Desc', 'IPMI?'))
+        sys.stdout.write(bcolors.ENDC)
+
+
+def print_matches(outformat, matches):
+    for idx, match in enumerate(matches):
+        if 'description' in match:
+            if match['description'] != None:
+                desc = match['description']
+            else:
+                desc = ""
+        else:
+            desc = ""
+
+        ipmi = re.findall(r'10+(?:\.[0-9]+){3}', desc)
+        if ipmi:
+            ipmi = 'http://%s' % str(ipmi[0])
+        else:
+            ipmi = "--"
+
+        if outformat == "csv":
+            print(",".join([match['@hostname'], match['@primaryIP'], desc, ipmi]))
+        else:
+            if idx % 2 == 0:
+                sys.stdout.write(bcolors.OKGREEN)
+            else:
+                sys.stdout.write(bcolors.OKBLUE)
+
+            print(("{:5s} {:%ds} {:17s} {:%ds} {:20s}" % (maxlen('@hostname', matches) + 2, maxlen('description', matches) + 2)).format(str(idx+1), match['@hostname'], match['@primaryIP'], desc, ipmi))
+            sys.stdout.write(bcolors.ENDC)
+
+
+def main():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-d', action='store', dest='device', help='Specify Device Type', default='server')
+    parser.add_argument('-u', action='store', dest='user', help='Specify SSH Username', default=os.environ.get('USER'))
+    parser.add_argument('-t', action='store_true', dest='telnet', help='Telnet login')
+    parser.add_argument('-n', action='store_true', dest='noprompt', help='Just return a list of devices')
+    parser.add_argument('-c', action='store_true', dest='nouser', help='Use SSH Conf File instead of specific user')
+    parser.add_argument('-o', action='store', dest='outformat', help='Output format (csv,default)', default='default')
+    parser.add_argument(action='store', dest='search_string', nargs='*')
+    args = parser.parse_args()
+
+    url = "http://xmlapi.sohonet.internal/api/v2/%slist/" % args.device
+
+    server_list = json.load(urlopen(url))
+
+    if len(sys.argv) == 1:
+        exit(1)
+
+    search_string = ' '.join(args.search_string)
+    search_string = search_string.replace('.sohonet.dcn', '')
+
+    matches = []
+
+    for server in server_list:
+
+        if 'description' in list(server.keys()):
+            if server['description'] != None:
+                if search_string.lower() in server['description'].lower():
+                    matches.append(server)
+
+        for k, v in server.items():
+            if isinstance(v, str):
+                if search_string.lower() in v.lower():
+                    if server not in matches:
+                        matches.append(server)
+
+    if len(matches) > 0:
+
+        print_header(args.outformat, matches)
+        print_matches(args.outformat, matches)
+
+
+        select = False
+
+        if not args.noprompt:
+            while select == False:
+                sys.stdout.write("make a selection # ")
+                try:
+                    selection = input()
+                    if selection == 'q':
+                        print("bye!")
+                        exit()
+                    if int(selection) <= len(matches):
+                        select = True
+                        if args.telnet:
+                            os.system('telnet %s' % str(matches[int(selection) - 1]['@hostname']))
+                        elif args.nouser:
+                            os.system('ssh %s' % (str(matches[int(selection) - 1]['@hostname'])))
+                        else:
+                            os.system('ssh -l %s %s' % (args.user, str(matches[int(selection) - 1]['@hostname'])))
+                    else:
+                        print("eh?")
+                except ValueError as e:
+                    print("eh?")
+
+
+    else:
+        print((bcolors.FAIL + "No results found !" + bcolors.ENDC))
+
+if __name__ == "__main__":
+    main()

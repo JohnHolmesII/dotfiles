@@ -15,6 +15,8 @@ case "$PKGR" in
     ;;
     "pkg") $SUDO pkg remove -R "$@"
     ;;
+    "port") $SUDO port uninstall "$@"
+    ;;
     *) echo "rem: unknown packager"; exit 1
     ;;
 esac

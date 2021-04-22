@@ -1,0 +1,187 @@
+#!/usr/bin/env ruby
+require 'thread'
+# Valid command line flags
+VALID_ARGS = %w(-a -g -f -d -h --help)
+def usage
+  puts "usage: validate-pp [-a] [-g] [-f <file-1>..<file-n>]"
+  puts "       [-d <directory-1>..<directory-n>] [-h | --help]"
+end
+# Parse ARGV[0], make sure the flag passed is valid.
+unless VALID_ARGS.include? ARGV[0]
+  puts "validate-pp needs a command line option." unless ARGV[0]
+  puts "Invalid option: '#{ARGV[0]}'" if ARGV[0]
+  usage
+  exit!
+end
+# Help output.
+if %w(-h --help).include? ARGV[0]
+  usage
+  puts
+  puts "validate-pp uses the `puppet parser validate` command to validate"
+  puts "files with the '.pp' extension in bulk. This makes it easy to validate"
+  puts "an entire puppet directory before committing to a git repo, for example."
+  puts
+  puts "Valid options:"
+  puts
+  puts "-a"
+  puts "    Validate every '.pp' file in the current directory and all subdirectories.\n\n"
+  puts "-d <directory-1>..<directory-n>"
+  puts "    Validate every '.pp' file in each given directory, and in all of their subdirectories.\n\n"
+  puts "-f <file-1>..<file-n>"
+  puts "    Validate each file listed on the command line.\n\n"
+  puts "-g"
+  puts "    If the current directory is a valid git repository, validate any '.pp' file in the repo"
+  puts "    that has been changed, copied, moved or renamed since the last commit. This can be"
+  puts "    significantly faster than using -a to parse a large puppet repo unnecessarily if"
+  puts "    most of the files in the repo are unchanged.\n\n"
+  puts "-h"
+  puts "    Display this help message."
+  puts
+  exit!
+end
+# Class to represent .pp file objects.
+class PuppetFile
+  # This will be the work queue our thread pool pulls from
+  # to validate the .pp files.
+  @@all_files = Queue.new
+  # Array to keep track of files that fail validation.
+  @@invalid_files = []
+  # return the queue of puppet files.
+  def self.all_files
+    @@all_files
+  end
+  # return the list of invalid files.
+  def self.invalid_files
+    @@invalid_files
+  end
+  attr_accessor :filename
+  # Create a puppet file. All we need is the filename,
+  # and to validate that it's actually a .pp file.
+  def initialize(filename)
+    unless File.extname(filename) == '.pp'
+      puts "Error, #{filename} does not appear to be a valid puppet file."
+      exit!
+    end
+    @filename = File.expand_path(filename).gsub(' ', '\ ')
+    # Add the new object to the queue.
+    @@all_files.push(self)
+  end
+  # Use puppet parser to validate the puppet file.
+  # if it fails validation, add it to the @@invalid_files array.
+  def validate
+    puts "Validating #{self.filename}..."
+    output = `puppet parser validate #{self.filename} 2>&1`
+    if $?.exitstatus != 0
+      @@invalid_files << { filename: self.filename, error: output }
+    end
+  end
+end
+# parse_args method figures out what we're supposed to do
+# based on the command line arguments.
+def parse_args
+  case ARGV[0]
+  when '-a'
+    # check that no arg was passed with the -a flag.
+    if ARGV[1]
+      puts "Error, '-a' flag cannot accept additional arguments."
+      puts "Run `validate-pp -h` for more info."
+      exit!
+    end
+    parse_directory(File.expand_path(Dir.pwd))
+  when '-d'
+    ARGV.shift
+    ARGV.each do |d|
+      unless File.directory?(d)
+        puts "Error, #{d} is not a directory."
+        puts "Run `validate-pp -h` for more info."
+        exit!
+      end
+    end
+    dirs = ARGV.map { |d| File.expand_path(d) }
+    dirs.each { |d| parse_directory(d) }
+  when "-f"
+    ARGV.shift
+    ARGV.each do |f|
+      unless File.extname(f) == '.pp'
+        puts "Error, #{f} is not a '.pp' file"
+        puts "Run `validate-pp -h` for more info."
+        exit!
+      end  
+    end
+    ARGV.each { |f| PuppetFile.new(File.expand_path(f)) }
+  when '-g'
+    if ARGV[1]
+      puts "Error, '-g' flag cannot accept additional arguments."
+      puts "Run `validate-pp -h` for more info."
+      exit!
+    end
+    parse_git_repo
+  end
+end
+# Parse a given directory for .pp files and make new 
+# PuppetFile instances with them.
+def parse_directory(dir)
+  search = File.join("**", "*.pp")
+  Dir.chdir dir
+  ppfiles = Dir.glob(search)
+  ppfiles.each { |f| PuppetFile.new(File.expand_path(f)) }
+end
+# If the current directory is a valid git repo, get the list
+# of new or modified files. Make PuppetFile instances out of the
+# ones that are .pp files.
+def parse_git_repo
+  git_output = `git status --porcelain 2>&1`
+  unless $?.exitstatus == 0
+    puts "Git error: make sure the current directory is a valid repo and that git is working."
+    exit!
+  end
+  list = git_output.split("\n")
+  # Get just what was added, modified, copied or moved.
+  # Skip deleted files.
+  files = list.reduce([]) do |a, f|
+    file = /[\?MARC ]{1,2} (.*\.pp)/.match f
+    a << file[1] if file
+    a
+  end
+  files.uniq! # remove dupes, just in case.
+  files.each { |f| PuppetFile.new(File.expand_path(f)) }
+end
+# Validate the files stored in our PuppetFile files queue.
+def validate_files
+  # Thread pool with 5 workers. Adjust as desired.
+  workers = (0..4).map do
+    Thread.new do
+      begin
+        while puppetfile = PuppetFile.all_files.pop(true)
+          puppetfile.validate
+        end
+      rescue ThreadError
+      end
+    end
+  end
+  workers.map(&:join)
+end
+# How'd it go?
+def output_results
+  if PuppetFile.invalid_files.any?
+    puts "\nThe following files had errors:\n\n"
+    PuppetFile.invalid_files.each do |file|
+      puts "File: #{file[:filename]}"
+      puts file[:error]
+      puts
+    end
+  else
+    puts "No errors found, all parsed files appear valid."
+  end
+end
+# -------------------------- Begin Script ---------------------------
+parse_args
+if PuppetFile.all_files.empty?
+  puts "No files found to validate."
+  exit!
+else
+  validate_files
+end
+output_results
+exit 1 if PuppetFile.invalid_files.any?
+exit 0

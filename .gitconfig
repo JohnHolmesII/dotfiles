@@ -1,7 +1,7 @@
 [user]
 	email = jedistephen@hotmail.com
 	name = JohnHolmesII
-	signingkey = B5AF0DC61A1C84D8A3D6549322B2A6E2C1E7D12C
+	signingKey = B5AF0DC61A1C84D8A3D6549322B2A6E2C1E7D12C
 [core]
 	autocrlf = input
 [alias]
@@ -22,3 +22,11 @@
 	ff = only
 [init]
 	defaultBranch = master
+[commit]
+	gpgSign = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[pager]
+	diff = diff-highlight | less
+	log = diff-highlight | less
+	show = diff-highlight | less
