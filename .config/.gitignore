@@ -1,6 +1,6 @@
 /*
 !/.gitignore
 
-!/sway
+!/sway/config
 !/waybar
 !/nvim
