@@ -12,4 +12,5 @@ exists 'nvim' && alias vim='nvim'
 
 if [ "$SYSNAME" != "Darwin" ]; then
 	alias ls='ls -h --group-directories-first --color=auto'
+    alias ll='ls -Alh'
 fi
