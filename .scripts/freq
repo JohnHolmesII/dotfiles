@@ -1,6 +1,6 @@
 #!/bin/sh
 
 while true; do
-    lscpu | grep "CPU MHz" | tr '\n' '\r'
+    lscpu | grep -P "CPU (max )?MHz" | tr '\n' '\r'
     sleep 1
 done
