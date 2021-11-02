@@ -2,12 +2,12 @@ zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' file-sort name
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
-zstyle :compinstall filename '/home/hurb/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit
 compinit
 
-HISTFILE=/tmp/histfile
+HISTFILE="$HOME/.zsh/zsh_history"
 HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd nomatch notify
