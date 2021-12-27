@@ -16,6 +16,8 @@ ASAN_SYMBOLIZER_PATH=$(command -v llvm-symbolizer 2>/dev/null); export ASAN_SYMB
 GIT_PS1_HIDE_IF_PWD_IGNORED=1;                                  export GIT_PS1_HIDE_IF_PWD_IGNORED
 GIT_PS1_SHOWDIRTYSTATE=1;                                       export GIT_PS1_SHOWDIRTYSTATE
 _JAVA_AWT_WM_NONREPARENTING=1;                                  export _JAVA_AWT_WM_NONREPARENTING
+MOZ_ENABLE_WAYLAND=1;                                           export MOZ_ENABLE_WAYLAND
+MOZ_DBUS_REMOTE=1;                                              export MOZ_DBUS_REMOTE
 
 [ -d "$HOME/.scripts" ] && export PATH="$HOME/.scripts:$PATH" && HAVE_SCRIPTS=true && export HAVE_SCRIPTS
 
