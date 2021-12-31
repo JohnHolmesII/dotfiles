@@ -49,6 +49,7 @@ include config.outputs
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaymsg exit
 
+    input type:keyboard xkb_numlock enabled
 # Moving around:
 #
     # Move your focus around
