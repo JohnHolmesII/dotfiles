@@ -20,7 +20,7 @@ include config.outputs
     # start a terminal
     bindsym $mod+Return exec $term
     # kill focused window
-    bindsym Mod1+q kill
+    bindsym $mod+q kill
     # start your launcher
     bindsym $mod+d exec $menu
     # screenshot
@@ -138,3 +138,6 @@ bar {
 }
 
 include /etc/sway/config.d/*
+exec --no-startup-id pipewire
+exec --no-startup-id pipewire-pulse
+exec --no-startup-id wireplumber

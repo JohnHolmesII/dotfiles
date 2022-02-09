@@ -7,7 +7,6 @@ esac
 alias vlg='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
 alias grep='grep --color=auto'
 alias bc='bc -sqi'
-alias sway='ssh-agent sway'
 exists 'nvim' && alias vim='nvim'
 
 if [ "$SYSNAME" != "Darwin" ]; then
