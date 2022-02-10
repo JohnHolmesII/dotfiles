@@ -3,11 +3,8 @@
 # shellcheck disable=SC1090
 # shellcheck disable=SC1091
 
-[ -n "$BASHRC_IS_SOURCED" ] && return
-BASHRC_IS_SOURCED=1; export BASHRC_IS_SOURCED
 . .git-completion.bash
 . .git-prompt.sh
-. .profile
 
 SHELL=$(command -v bash || echo /bin/sh); export SHELL
 
