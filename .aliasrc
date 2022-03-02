@@ -1,7 +1,7 @@
 case "$SYSNAME" in
 	"Artix") alias gh='cd /media/Programs';;
 	"Ubuntu") alias gh='cd /mnt/d/Programs';;
-	"Msys") alias gh='cd D:\Programs';;
+	"Msys") alias gh='cd /d/Programs';;
 esac
 
 alias vlg='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
