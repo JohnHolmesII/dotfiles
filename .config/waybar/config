@@ -15,7 +15,8 @@
         "clock"
     ],
     "sway/window": {
-        "max-length": 50
+        "max-length": 50,
+        "icon": false
     },
     "pulseaudio": {
         "format": "{volume}% AUD",
