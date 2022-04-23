@@ -1,12 +1,12 @@
 #!/bin/sh
 
 if [ -z "$1" ]; then
-	echo Which compiler? && exit 1;
+    echo Which compiler? && exit 1;
 elif [ "$1" = "gcc" ]; then
-	export CC=gcc;
-	export CXX=g++;
+    export CC=gcc;
+    export CXX=g++;
 elif [ "$1" = "clang" ]; then
-	export CC=clang;
-	export CXX=clang++;
+    export CC=clang;
+    export CXX=clang++;
 fi
 
