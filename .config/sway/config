@@ -27,6 +27,8 @@ include config.outputs
     bindsym Print exec agrim
     # screenshot area
     bindsym $mod+Shift+s exec agrim region
+    # screenshot current window
+    bindsym Mod1+Print exec agrim window
 
     # media keys
     set $soundctl --no-startup-id pactl
