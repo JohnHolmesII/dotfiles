@@ -23,8 +23,8 @@ PS1="$PS1"'`__git_ps1`'  # Bash function
 PS1="$PS1"'\n'           # New line
 PS1="$PS1"'\[\e[0;36m\]' # Change color to cyan
 PS1="$PS1"'└─'           # Fanciness
-PS1="$PS1"'$ '           # Prompt: always $
 PS1="$PS1"'\[\e[0m\]'    # Reset color
+PS1="$PS1"'$ '           # Prompt: always $
 export PS1
 
 . "$HOME/.xshrc"
