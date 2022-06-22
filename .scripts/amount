@@ -1,12 +1,25 @@
 #!/bin/sh
 
-mountable=$(lsblk -lp | grep "part $" | awk '{ print $1, "(" $4 ")" }')
-[ -z "$mountable" ] && exit 0
+tmpFile="$(mktemp)"
+driveInfo="$(lsblk -lpo NAME,FSTYPE,SIZE,MOUNTPOINTS > $tmpFile)"
+drives=""
 
-drive=$(echo "$mountable" | dmenu -fn Hack -p "Select drive to mount" | awk '{ print $1 }')
-[ -z "$drive" ] && exit 0
+while read -r name fstype size mountpoint; do
+    [ -z "$mountpoint" ] && [ -z "$size" ] && continue # Just a disk, not a part
+    [ -n "$mountpoint" ] && continue # No need to mount mounted drives :)
+    [ -z "$fstype" ] && continue # No point in bothering with drives without filesystems
+
+    drives="$name ($size) $drives"
+done < "$tmpFile"
+rm "$tmpFile"
+
+[ -z "$drives" ] && exit 1
+
+drive=$(echo $drives | dmenu -fn Hack -p "Select drive to mount" | awk '{ print $1 }')
+[ -z "$drive" ] && exit 1
 
 mountPoint=/mnt/$(echo "$drive" | cut -d'/' -f3)
 [ -d "$mountPoint" ] || sudo mkdir -p "$mountPoint"
+sudo chown "$(whoami)" "$mountPoint"
 echo "Mounting $drive to $mountPoint"
 sudo mount "$drive" "$mountPoint" && exit $?
