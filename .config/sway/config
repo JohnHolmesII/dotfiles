@@ -52,6 +52,7 @@ include config.outputs
     bindsym $mod+Shift+e exec swaymsg exit
 
     input type:keyboard xkb_numlock enabled
+    input type:keyboard xkb_options ctrl:swapcaps
 # Moving around:
 #
     # Move your focus around
