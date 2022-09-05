@@ -16,7 +16,6 @@
     tool = default-difftool
 [difftool "default-difftool"]
     cmd = code --wait --diff $LOCAL $REMOTE
-    
 [gpg]
 	program = gpg2
 [pull]
@@ -25,8 +24,6 @@
 	defaultBranch = master
 [commit]
 	gpgSign = true
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
 [pager]
 	diff = diff-highlight | less
 	log = diff-highlight | less
