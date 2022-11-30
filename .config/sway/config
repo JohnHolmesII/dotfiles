@@ -23,6 +23,8 @@ include config.outputs
     bindsym $mod+q kill
     # start your launcher
     bindsym $mod+d exec $menu
+    # open a file explorer
+    bindsym $mod+e exec xfe
     # screenshot
     bindsym Print exec agrim
     # screenshot area
