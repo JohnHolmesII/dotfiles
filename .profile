@@ -20,6 +20,7 @@ MOZ_ENABLE_WAYLAND=1;                                           export MOZ_ENABL
 MOZ_DBUS_REMOTE=1;                                              export MOZ_DBUS_REMOTE
 XDG_CURRENT_DESKTOP=sway;                                       export XDG_CURRENT_DESKTOP
 LSCOLORS='ExGxdxbxcxegedabagacad';                              export LSCOLORS
+HISTSIZE=10000;                                                 export HISTSIZE
 
 export PATH="$HOME/.scripts:$PATH"
 
