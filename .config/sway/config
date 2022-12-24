@@ -8,9 +8,14 @@ set $term st
 set $menu bemenu-run -p'>' --no-exec --tf '#ffffff' --fn 'Hack Nerd Font Mono' --hb '#0077aa' --hf '#ffffff' | xargs swaymsg exec
 
 # Output
-default_border none
+default_border pixel 1
 gaps outer 0
 gaps inner 8
+
+# client.class          border  background  text
+client.focused          #ffffff #65bf68     #ffffff
+client.focused_inactive #ffffff #a0a0a0     #ffffff
+
 include config.outputs
 
 ### Key bindings
