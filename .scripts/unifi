@@ -1,4 +1,4 @@
-sudo podman run -d \
+sudo podman run --rm -d \
   --name=unifi-controller \
   -e PUID=1000 \
   -e PGID=1000 \
@@ -13,5 +13,4 @@ sudo podman run -d \
   -p 6789:6789 \
   -p 5514:5514/udp \
   -v /home/hurb/documents/Unifi:/config \
-  --restart unless-stopped \
   lscr.io/linuxserver/unifi-controller:latest
