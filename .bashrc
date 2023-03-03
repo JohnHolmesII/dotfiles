@@ -27,6 +27,6 @@ PS1="$PS1"'\[\e[0m\]'    # Reset color
 PS1="$PS1"'$ '           # Prompt: always $
 export PS1
 
-printf '\033[?1h\033=' > /dev/tty
+printf '\033[?1h\033=' > $(tty)
 
 . "$HOME/.xshrc"
