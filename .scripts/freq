@@ -1,6 +1,6 @@
 #!/bin/sh
 
 while true; do
-    lscpu | grep -P "CPU (max )?MHz" | tr '\n' '\r'
+    awk 'BEGIN { bob = 0.0; procs = 0; max = 0.0 } /MHz/ { bob += $4; procs += 1; if ($4 > max) { max = $4 } } END { printf("CPU MHz (avg): %0.2f\tCPU MHz (max): %0.2f\r", bob / procs, max) }' /proc/cpuinfo
     sleep 1
 done
