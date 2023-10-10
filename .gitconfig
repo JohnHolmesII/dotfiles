@@ -25,6 +25,6 @@
 [commit]
 	gpgSign = true
 [pager]
-	diff = diff-highlight | less
-	log = diff-highlight | less
-	show = diff-highlight | less
+	diff = diff-so-fancy | less
+	log = diff-so-fancy | less
+	show = diff-so-fancy | less
