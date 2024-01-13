@@ -21,6 +21,7 @@ MOZ_DBUS_REMOTE=1;                                              export MOZ_DBUS_
 LSCOLORS='ExGxdxbxcxegedabagacad';                              export LSCOLORS
 HISTSIZE=100000;                                                export HISTSIZE
 SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket";              export SSH_AUTH_SOCK
+QT_QPA_PLATFORMTHEME=qt6ct;                                     export QT_QPA_PLATFORMTHEME
 
 export PATH="$HOME/.scripts:$PATH"
 
