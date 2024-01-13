@@ -1,3 +1,0 @@
-#!/bin/sh
-
-ssh-agent dbus-launch --exit-with-session /usr/bin/sway 2>&1 | logger

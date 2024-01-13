@@ -1,11 +1,11 @@
 {
-    "layer": "top",
+    "layer": "bottom",
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/mode"
+        "sway/workspaces",
+        "sway/mode"
     ],
     "modules-center": [
-        "hyprland/window"
+        "sway/window"
     ],
     "modules-right": [
         "backlight",
@@ -14,10 +14,9 @@
         "network",
         "clock"
     ],
-    "hyprland/window": {
+    "sway/window": {
         "max-length": 50,
-        "icon": false,
-        "separate-outputs": true
+        "icon": false
     },
     "pulseaudio": {
         "format": "{volume}% AUD",

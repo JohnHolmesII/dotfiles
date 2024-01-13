@@ -29,7 +29,7 @@ include config.outputs
     # start your launcher
     bindsym $mod+d exec $menu
     # open a file explorer
-    bindsym $mod+e exec xfe
+    bindsym $mod+e exec dolphin
     # screenshot
     bindsym Print exec agrim
     # screenshot area
@@ -50,9 +50,9 @@ include config.outputs
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
     # Change normal to inverse to use left mouse button for resizing and right
-
     # mouse button for dragging.
     floating_modifier $mod normal
+
     # reload the configuration file
     bindsym $mod+Shift+c reload
     # exit sway (logs you out of your Wayland session)
@@ -102,9 +102,6 @@ include config.outputs
 #
 # Layout stuff:
 #
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
     bindsym $mod+b splith
     bindsym $mod+v splitv
 
@@ -136,18 +133,11 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
+bindsym $mod+r mode "resize"
 
 bar {
     swaybar_command waybar
 }
 
 include /etc/sway/config.d/*
-exec --no-startup-id pipewire
-exec --no-startup-id pipewire-pulse
-exec --no-startup-id wireplumber
