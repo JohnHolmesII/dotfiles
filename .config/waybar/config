@@ -10,7 +10,7 @@
     "modules-right": [
         "backlight",
         "battery",
-        "pulseaudio",
+        "wireplumber",
         "network",
         "clock"
     ],
@@ -18,7 +18,7 @@
         "max-length": 50,
         "icon": false
     },
-    "pulseaudio": {
+    "wireplumber": {
         "format": "{volume}% AUD",
         "format-muted": "M {format_source}"
     },

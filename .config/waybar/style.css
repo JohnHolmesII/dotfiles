@@ -28,13 +28,13 @@ window#waybar {
     background-color: #EB4D4B;
 }
 
-#pulseaudio, #network, #mode, #clock, #battery, #backlight {
+#wireplumber, #network, #mode, #clock, #battery, #backlight {
     color: #c3c95d;
     padding: 0 10px;
     margin: 0 5px;
 }
 
-#pulseaudio {
+#wireplumber {
     background-color: #572461;
 }
 
