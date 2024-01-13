@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/bin/sway > /var/log/sway.log 2> /var/log/sway-error.log
