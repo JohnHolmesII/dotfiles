@@ -18,7 +18,6 @@ GIT_PS1_SHOWDIRTYSTATE=1;                                       export GIT_PS1_S
 _JAVA_AWT_WM_NONREPARENTING=1;                                  export _JAVA_AWT_WM_NONREPARENTING
 MOZ_ENABLE_WAYLAND=1;                                           export MOZ_ENABLE_WAYLAND
 MOZ_DBUS_REMOTE=1;                                              export MOZ_DBUS_REMOTE
-XDG_CURRENT_DESKTOP=sway;                                       export XDG_CURRENT_DESKTOP
 LSCOLORS='ExGxdxbxcxegedabagacad';                              export LSCOLORS
 HISTSIZE=100000;                                                export HISTSIZE
 SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket";              export SSH_AUTH_SOCK
