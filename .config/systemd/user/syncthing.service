@@ -1,0 +1,9 @@
+[Unit]
+Description=Syncthing
+ConditionPathIsMountPoint=/mnt/media
+
+[Service]
+ExecStart=/usr/bin/syncthing
+
+[Install]
+WantedBy=default.target
