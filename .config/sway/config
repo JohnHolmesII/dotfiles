@@ -15,8 +15,13 @@ input type:keyboard xkb_numlock enabled
 input type:keyboard xkb_options ctrl:swapcaps
 
 for_window [title="Firefox — Sharing Indicator"] floating enable
-for_window [class="xwaylandvideobridge"] move to scratchpad
+for_window [class="xwaylandvideobridge"] {
+    move to workspace current
+    floating enable
+}
 
+bindsym $mod+h move absolute position -3439 -1439
+bindsym $mod+x exec strem
 bindsym $mod+Return exec $term
 bindsym $mod+q kill
 bindsym $mod+d exec $menu
@@ -83,5 +88,3 @@ bar {
 }
 
 include /etc/sway/config.d/*
-
-exec xwaylandvideobridge &
