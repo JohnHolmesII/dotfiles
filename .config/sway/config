@@ -15,6 +15,7 @@ input type:keyboard xkb_numlock enabled
 input type:keyboard xkb_options ctrl:swapcaps
 
 for_window [title="Firefox — Sharing Indicator"] floating enable
+for_window [app_id="org.kde.dolphin"] floating enable
 for_window [class="xwaylandvideobridge"] {
     move to workspace current
     floating enable
