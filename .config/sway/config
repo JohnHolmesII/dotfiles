@@ -11,6 +11,8 @@ client.focused_inactive #ffffff #a0a0a0     #ffffff
 
 include config.outputs
 
+exec --no-startup-id swaymsg 'workspace 2; exec firefox https://discord.app'
+
 input type:keyboard xkb_numlock enabled
 input type:keyboard xkb_options ctrl:swapcaps
 
