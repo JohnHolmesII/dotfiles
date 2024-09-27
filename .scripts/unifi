@@ -12,4 +12,4 @@ sudo podman run --rm -d \
   -p 6789:6789 \
   -p 5514:5514/udp \
   -v /home/hurb/unifi:/config \
-  lscr.io/linuxserver/unifi-controller:latest
+  lscr.io/linuxserver/unifi-controller:7.2.94
