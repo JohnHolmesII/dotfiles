@@ -44,6 +44,7 @@
         "max-length": 20
     },
     "clock": {
-        "format": "{:%a %d %b %I:%M}"
+        "interval": 1,
+        "format": "{:%a %d %b %I:%M:%S}"
     }
 }
