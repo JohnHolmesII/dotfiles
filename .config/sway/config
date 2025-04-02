@@ -18,11 +18,13 @@ input type:keyboard xkb_options ctrl:swapcaps
 
 for_window [title="Firefox — Sharing Indicator"] floating enable
 for_window [app_id="org.kde.dolphin"] floating enable
+for_window [class="R_x11"] floating enable
 for_window [class="xwaylandvideobridge"] {
     move to workspace current
     floating enable
 }
 
+bindsym $mod+t floating toggle
 bindsym $mod+h move absolute position -3439 -1439
 bindsym $mod+x exec strem
 bindsym $mod+Return exec $term
