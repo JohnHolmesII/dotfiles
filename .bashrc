@@ -28,5 +28,7 @@ PS1="$PS1"'$ '           # Prompt: always $
 export PS1
 
 printf '\033[?1h\033=' > $(tty)
+stty werase undef
+bind '\C-w:unix-filename-rubout'
 
 . "$HOME/.xshrc"
